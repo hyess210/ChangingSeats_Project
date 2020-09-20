@@ -1,11 +1,14 @@
 import React from 'react';
-import 'assets/utils/index.scss';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import * as Pages from '../pages';
 
 const App = () => {
   return (
-    <>
-      <div>React Mobx TS Setting</div>
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' render={ () => <Pages.MainPage/> } />
+      </Switch>
+    </BrowserRouter>
   );
 };
 

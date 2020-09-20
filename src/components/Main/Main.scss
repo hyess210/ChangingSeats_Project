@@ -1,0 +1,24 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+.Main {
+  &__contentBox {
+    &-left {
+      margin-left: 20%;
+      & ul {
+        list-style: none;
+        & li {
+          float: left;
+        }
+      }
+      & h1 {
+        font-family: $NANUM-SQUARE_EXTRABOLD;
+        font-size: $font_title_5;
+      }
+      & p {
+        font-family: $NANUM-SQUARE_BOLD;
+        font-size: $font_title_1;
+      }
+    }
+  }
+}
