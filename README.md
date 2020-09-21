@@ -6,6 +6,7 @@
 
 > <b>자리 바꾸기</b>,<b>제비 뽑기</b>,<b>모둠 정하기</b> 기능이 있습니다.
 
+---------------------------------------------------------
 
 #### :pushpin:React Mobx JS (PCC) Programming Rules
 by: https://github.com/SoonGwan/React-Mobx-TS-PCC-
