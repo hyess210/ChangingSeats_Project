@@ -4,8 +4,7 @@ import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
 import Button from 'components/Common/Button/Button';
 
-// import LOGO from 'assets/images/Main/changeSeat_logo.png';
-import MAIN_RIGHT from 'assets/images/Main/Team.svg';
+import MAIN_RIGHT from 'assets/images/Main/Team.png';
 
 const style = require('./Main.scss');
 const cx: ClassNamesFn = classNames.bind(style);
