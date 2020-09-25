@@ -2,7 +2,15 @@
   "compilerOptions": {
     "baseUrl": "src",
     "target": "es6",
+<<<<<<< HEAD
     "lib": ["dom", "dom.iterable", "esnext"],
+=======
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+>>>>>>> master
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,5 +25,12 @@
     "noEmit": true,
     "jsx": "react"
   },
+<<<<<<< HEAD
   "include": ["src"]
 }
+=======
+  "include": [
+    "src"
+  ]
+}
+>>>>>>> master

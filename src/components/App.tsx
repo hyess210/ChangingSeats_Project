@@ -6,12 +6,16 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+<<<<<<< HEAD
         <Route exact path="/" render={() => <Pages.MainPage />} />
         <Route
           exact
           path="/random-seats"
           render={() => <Pages.RandomSeatsPage />}
         />
+=======
+        <Route exact path='/' render={ () => <Pages.MainPage/> } />
+>>>>>>> master
       </Switch>
     </BrowserRouter>
   );
