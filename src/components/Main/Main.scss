@@ -4,15 +4,7 @@
 .Main {
   &__contentBox {
     &-left {
-<<<<<<< HEAD
-      margin-left: 10%;
-      margin-top: 15%;
-      // &-logo {
-      //   width: 20rem;
-      // }
-=======
       margin-left: 20%;
->>>>>>> master
       & ul {
         list-style: none;
         & li {
@@ -21,23 +13,11 @@
       }
       & h1 {
         font-family: $NANUM-SQUARE_EXTRABOLD;
-<<<<<<< HEAD
-        font-size: 2.8rem;
-        color: $gray5;
-        margin-bottom: 10px;
-      }
-      & p {
-        font-family: $NANUM-SQUARE_BOLD;
-        font-size: $font_title_3;
-        color: $gray4;
-        margin-bottom: 25px;
-=======
         font-size: $font_title_5;
       }
       & p {
         font-family: $NANUM-SQUARE_BOLD;
         font-size: $font_title_1;
->>>>>>> master
       }
     }
   }
