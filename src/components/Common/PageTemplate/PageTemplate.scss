@@ -1,9 +1,5 @@
-// @import 'styles/colorSchema.scss';
-// @import 'styles/typography/typography_Scheme.scss';
-
-* {
-  // font-family: $NANUM-SQUARE_REGULAR;
-}
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
 
 .PageTemplate {
   &__header {

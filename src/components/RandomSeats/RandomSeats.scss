@@ -3,8 +3,15 @@
 
 .RandomSeats {
   &__left {
+    float: left;
+    margin-left: 20%;
+    &-top {
+      background-color: lightcyan;
+      height: 300px;
+    }
     &-bottom {
       & img {
+        display: block;
         height: 400px;
       }
     }
