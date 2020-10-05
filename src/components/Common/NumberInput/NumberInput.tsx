@@ -9,15 +9,22 @@ interface INumberInput {
   minNumber: number;
   maxNumber: number;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  value: number;
 }
 
-const NumberInput = ({ minNumber, maxNumber, onChange }: INumberInput) => {
+const NumberInput = ({
+  minNumber,
+  maxNumber,
+  onChange,
+  value,
+}: INumberInput) => {
   return (
     <input
       type="number"
       min={minNumber}
       max={maxNumber}
       onChange={() => onChange}
+      value={value}
       className={cx(`NumberInput`)}
     />
   );

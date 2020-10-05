@@ -11,7 +11,9 @@ import RandomSeatsCard from './RandomSeatsCard/RandomSeatsCard';
 const style = require('./RandomSeats.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
-interface IRandomSeatsProps {}
+interface IRandomSeatsProps {
+  createTable: (arg0: number, arg1: number) => void;
+}
 
 const buttonCustomStyle = {
   width: '6rem',
@@ -20,8 +22,9 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const RandomSeats = () => {
-  const [lineNumber, setLineNumber] = useState<number>(0);
+const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
+  const [rowNumber, setRowLineNumber] = useState<number>(1);
+  const [columnNumber, setColumnLineNumber] = useState<number>(1);
   const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,10 +39,11 @@ const RandomSeats = () => {
             줄(행)의 수
             <NumberInput
               minNumber={1}
-              maxNumber={10}
+              maxNumber={24}
               onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                setLineNumber(Number(e.target.value))
+                setRowLineNumber(Number(e.target.value))
               }
+              value={rowNumber}
             />
             <span style={{ margin: '20px' }}>
               칸(열)의 수
@@ -47,8 +51,9 @@ const RandomSeats = () => {
                 minNumber={1}
                 maxNumber={10}
                 onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                  setLineNumber(Number(e.target.value))
+                  setColumnLineNumber(Number(e.target.value))
                 }
+                value={columnNumber}
               />
             </span>
           </div>
@@ -71,7 +76,11 @@ const RandomSeats = () => {
         </div>
         <div className={cx('RandomSeats__left-bottom')}>
           <img src={RANDOMSEATS_IMG} alt="자리 뽑기" />
-          <Button children="자리 생성" customStyle={buttonCustomStyle} />
+          <Button
+            children="자리 생성"
+            customStyle={buttonCustomStyle}
+            handleFunction={() => createTable(rowNumber, columnNumber)}
+          />
         </div>
       </div>
 

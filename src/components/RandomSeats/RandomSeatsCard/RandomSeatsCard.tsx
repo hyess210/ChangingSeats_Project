@@ -18,23 +18,18 @@ const buttonCustomStyle = {
 
 const RandomSeatsCard = () => {
   const SeatCard = () => {
-    return (
-      <li className={cx('RandomSeatsCard__list')}>
-        <div>20</div>
-      </li>
-    );
+    return <></>;
   };
   return (
     <>
       <div className={cx('RandomSeatsCard__base')}>교탁</div>
       <div className={cx('RandomSeatsCard__seats')}>
-        <ul>
-          <SeatCard />
-          <SeatCard />
-          <SeatCard />
-          <SeatCard />
-          <SeatCard />
-        </ul>
+        <table className={cx('RandomSeatsCard__card')}>
+          <tr>
+            <th>20</th>
+            <th>20</th>
+          </tr>
+        </table>
       </div>
     </>
   );
