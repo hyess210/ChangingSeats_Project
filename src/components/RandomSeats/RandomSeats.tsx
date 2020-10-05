@@ -8,7 +8,12 @@ const style = require('./RandomSeats.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
 const RandomSeats = () => {
-  return <></>;
+  return (
+    <>
+      <div className={cx('RandomSeats__left')}></div>
+      <div className={cx('RandomSeats__right')}></div>
+    </>
+  );
 };
 
 export default RandomSeats;

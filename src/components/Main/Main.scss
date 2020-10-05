@@ -4,7 +4,10 @@
 .Main {
   &__contentBox {
     &-left {
-      margin-left: 20%;
+      // background-color: lightcyan;
+      float: left;
+      margin-top: 15%;
+      margin-left: 10%;
       & ul {
         list-style: none;
         & li {
@@ -13,11 +16,24 @@
       }
       & h1 {
         font-family: $NANUM-SQUARE_EXTRABOLD;
-        font-size: $font_title_5;
+        font-size: 3rem;
+        color: $gray5;
+        margin-bottom: 15px;
       }
       & p {
         font-family: $NANUM-SQUARE_BOLD;
-        font-size: $font_title_1;
+        font-size: $font_title_3;
+        color: $gray3;
+        margin-bottom: 20px;
+      }
+    }
+    &-right {
+      float: right;
+      margin-right: 5%;
+      margin-top: 10%;
+      // background-color: lightcoral;
+      & img {
+        height: 700px;
       }
     }
   }

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
 import Button from 'components/Common/Button/Button';
 
-import MAIN_RIGHT from 'assets/images/Main/Team.png';
+import MAIN_LOGO from 'assets/images/Main/Team.png';
 
 const style = require('./Main.scss');
 const cx: ClassNamesFn = classNames.bind(style);
@@ -36,7 +37,12 @@ const Main = () => {
             </p>
             <ul>
               <li>
-                <Button children="자리 뽑기" customStyle={buttonCustomStyle} />
+                <Link to="/random-seats">
+                  <Button
+                    children="자리 뽑기"
+                    customStyle={buttonCustomStyle}
+                  />
+                </Link>
               </li>
               <li>
                 <Button children="제비 뽑기" customStyle={buttonCustomStyle} />
@@ -51,7 +57,7 @@ const Main = () => {
           </div>
         </div>
         <div className={cx('Main__contentBox-right')}>
-          <MAIN_RIGHT />
+          <img src={MAIN_LOGO} alt="자리바꿔주세요!" />
         </div>
       </div>
     </>
