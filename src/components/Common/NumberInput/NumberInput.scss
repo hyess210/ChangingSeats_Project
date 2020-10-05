@@ -1,0 +1,18 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+.NumberInput {
+  color: $black;
+  border: 1.5px solid $gray2;
+  border-radius: 3px;
+  background-color: transparent;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  font-size: $font_content_3;
+  font-family: $NANUM_SQUARE_BOLD;
+  margin-left: 15px;
+  &:focus {
+    outline: none;
+  }
+}

@@ -5,13 +5,13 @@ import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
 import Button from 'components/Common/Button/Button';
 import NumberInput from 'components/Common/NumberInput/NumberInput';
+import Radio, { RadioProps } from '@material-ui/core/Radio';
+import RandomSeatsCard from './RandomSeatsCard/RandomSeatsCard';
 
 const style = require('./RandomSeats.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
 interface IRandomSeatsProps {}
-
-const [linenumber, setLineNumber] = useState<number>(0);
 
 const buttonCustomStyle = {
   width: '6rem',
@@ -21,25 +21,63 @@ const buttonCustomStyle = {
 };
 
 const RandomSeats = () => {
+  const [lineNumber, setLineNumber] = useState<number>(0);
+  const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
+
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsRandom(!isRandom);
+  };
+
   return (
     <>
       <div className={cx('RandomSeats__left')}>
         <div className={cx('RandomSeats__left-top')}>
-          줄(행)의 수
-          <NumberInput
-            minNumber={1}
-            maxNumber={10}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-              setLineNumber(Number(e.target.value))
-            }
-          />
+          <div style={{ textAlign: 'center' }}>
+            줄(행)의 수
+            <NumberInput
+              minNumber={1}
+              maxNumber={10}
+              onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                setLineNumber(Number(e.target.value))
+              }
+            />
+            <span style={{ margin: '20px' }}>
+              칸(열)의 수
+              <NumberInput
+                minNumber={1}
+                maxNumber={10}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  setLineNumber(Number(e.target.value))
+                }
+              />
+            </span>
+          </div>
+          <div className={cx('RandomSeats__left-top-radio')}>
+            랜덤 숫자
+            <Radio
+              checked={isRandom}
+              onChange={handleRadioChange}
+              value={isRandom}
+              name="radio-random"
+            />
+            숫자 정렬
+            <Radio
+              checked={!isRandom}
+              onChange={handleRadioChange}
+              value={isRandom}
+              name="radio-number"
+            />
+          </div>
         </div>
         <div className={cx('RandomSeats__left-bottom')}>
           <img src={RANDOMSEATS_IMG} alt="자리 뽑기" />
           <Button children="자리 생성" customStyle={buttonCustomStyle} />
         </div>
       </div>
-      <div className={cx('RandomSeats__right')}></div>
+
+      <div className={cx('RandomSeats__right')}>
+        <RandomSeatsCard />
+      </div>
     </>
   );
 };
