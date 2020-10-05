@@ -1,0 +1,14 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+.RandomSeats {
+  &__left {
+    &-bottom {
+      & img {
+        height: 400px;
+      }
+    }
+  }
+  &__right {
+  }
+}
