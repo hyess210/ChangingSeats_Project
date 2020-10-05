@@ -30,6 +30,10 @@ const RandomSeatsCard = () => {
       <div className={cx('RandomSeatsCard__seats')}>
         <ul>
           <SeatCard />
+          <SeatCard />
+          <SeatCard />
+          <SeatCard />
+          <SeatCard />
         </ul>
       </div>
     </>
