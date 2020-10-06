@@ -27,7 +27,6 @@ const RandomSeatsCard = () => {
         <table className={cx('RandomSeatsCard__card')}>
           <tr>
             <th>20</th>
-            <th>20</th>
           </tr>
         </table>
       </div>

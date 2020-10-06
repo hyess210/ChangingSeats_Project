@@ -3,7 +3,7 @@
 
 .RandomSeatsCard {
   &__base {
-    width: 250px;
+    width: 200px;
     height: 70px;
     color: $white;
     background-color: $gray4;
@@ -11,14 +11,14 @@
     text-align: center;
     font-size: $font_title_4;
     padding-top: 20px;
-    margin-top: 10%;
-    margin-bottom: 8%;
+    margin: 10% auto 8% auto;
   }
   &__seats {
+    text-align: center;
   }
   &__card {
-    list-style: none;
     display: inline-block;
+    margin: 0 auto 0 auto;
     & tr th {
       width: 130px;
       height: 70px;

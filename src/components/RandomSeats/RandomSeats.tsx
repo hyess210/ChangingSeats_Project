@@ -26,6 +26,7 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
   const [rowNumber, setRowLineNumber] = useState<number>(1);
   const [columnNumber, setColumnLineNumber] = useState<number>(1);
   const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
+  const [isCreateSeats, setIsCreateSeats] = useState<boolean>(false);
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsRandom(!isRandom);
@@ -76,16 +77,24 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
         </div>
         <div className={cx('RandomSeats__left-bottom')}>
           <img src={RANDOMSEATS_IMG} alt="자리 뽑기" />
-          <Button
-            children="자리 생성"
-            customStyle={buttonCustomStyle}
-            handleFunction={() => createTable(rowNumber, columnNumber)}
-          />
+          {isCreateSeats ? (
+            <Button
+              children="다시 생성"
+              customStyle={buttonCustomStyle}
+              handleFunction={() => setIsCreateSeats(true)}
+            />
+          ) : (
+            <Button
+              children="자리 생성"
+              customStyle={buttonCustomStyle}
+              handleFunction={() => setIsCreateSeats(true)}
+            />
+          )}
         </div>
       </div>
 
       <div className={cx('RandomSeats__right')}>
-        <RandomSeatsCard />
+        {isCreateSeats ? <RandomSeatsCard /> : <></>}
       </div>
     </>
   );
