@@ -16,15 +16,15 @@ interface IRandomSeatsProps {
 }
 
 const buttonCustomStyle = {
-  width: '6rem',
-  height: '2rem',
+  width: '6.5rem',
+  height: '2.5rem',
   margin: '15px 0px 0px 140px',
   fontSize: '18px',
 };
 
 const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
-  const [rowNumber, setRowLineNumber] = useState<number>(1);
-  const [columnNumber, setColumnLineNumber] = useState<number>(1);
+  const [rowNumber, setRowNumber] = useState<number>(2);
+  const [columnNumber, setColumnNumber] = useState<number>(5);
   const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
   const [isCreateSeats, setIsCreateSeats] = useState<boolean>(false);
 
@@ -41,20 +41,20 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             <NumberInput
               minNumber={1}
               maxNumber={24}
-              onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                setRowLineNumber(Number(e.target.value))
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setRowNumber(Number(e.target.value))
               }
-              value={rowNumber}
+              // value={rowNumber}
             />
             <span style={{ margin: '20px' }}>
               칸(열)의 수
               <NumberInput
                 minNumber={1}
                 maxNumber={10}
-                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                  setColumnLineNumber(Number(e.target.value))
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setColumnNumber(Number(e.target.value))
                 }
-                value={columnNumber}
+                // value={columnNumber}
               />
             </span>
           </div>
@@ -81,7 +81,7 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             <Button
               children="다시 생성"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateSeats(true)}
+              handleFunction={() => createTable(rowNumber, columnNumber)}
             />
           ) : (
             <Button
@@ -94,7 +94,15 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
       </div>
 
       <div className={cx('RandomSeats__right')}>
-        {isCreateSeats ? <RandomSeatsCard /> : <></>}
+        {isCreateSeats ? (
+          <RandomSeatsCard
+            createTable={createTable}
+            rows={rowNumber}
+            columns={columnNumber}
+          />
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

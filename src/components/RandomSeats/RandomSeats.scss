@@ -2,6 +2,7 @@
 @import 'styles/typography/typography_Scheme.scss';
 
 .RandomSeats {
+  font-size: $font_content_3;
   &__left {
     float: left;
     margin-left: 15%;
@@ -22,7 +23,7 @@
   &__right {
     float: right;
     margin-right: 8%;
-    background-color: wheat;
+    // background-color: wheat;
     width: 880px;
   }
 }
