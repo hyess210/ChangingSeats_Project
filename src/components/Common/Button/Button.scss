@@ -25,7 +25,7 @@ $outline_tertiary_color: rgba($black, $background_color_transparent);
 
 @mixin buttonEvent($event_color) {
   &:hover {
-    background-color: $main_active;
+    background-color: $event_color;
     box-shadow: 0.19rem 0.19rem rgba($event_color, 0.2);
   }
 
@@ -35,18 +35,19 @@ $outline_tertiary_color: rgba($black, $background_color_transparent);
 }
 
 @mixin outlineButton($border_color) {
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
   border-color: $border_color;
+  font-weight: bold;
 }
 
 @mixin outlineButtonEvent($hover_color, $active_color) {
   &:hover {
-    background-color: rgba($active_color, 0.2);
+    background-color: rgba($active_color, 0.25);
   }
 
   &:active {
-    background-color: rgba($active_color, 1);
+    background-color: rgba($active_color, 0.8);
   }
 }
 

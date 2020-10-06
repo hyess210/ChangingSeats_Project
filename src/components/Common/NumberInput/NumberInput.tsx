@@ -8,23 +8,25 @@ const cx: ClassNamesFn = classNames.bind(style);
 interface INumberInput {
   minNumber: number;
   maxNumber: number;
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
-  value: number;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  // value: number;
 }
 
 const NumberInput = ({
   minNumber,
   maxNumber,
   onChange,
-  value,
-}: INumberInput) => {
+}: // value,
+INumberInput) => {
   return (
     <input
       type="number"
       min={minNumber}
       max={maxNumber}
-      onChange={() => onChange}
-      value={value}
+      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+        console.log(e.target.value)
+      }
+      // value={value}
       className={cx(`NumberInput`)}
     />
   );
