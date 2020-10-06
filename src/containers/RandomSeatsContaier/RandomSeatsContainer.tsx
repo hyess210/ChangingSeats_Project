@@ -1,20 +1,31 @@
 import React from 'react';
 import RandomSeats from 'components/RandomSeats/RandomSeats';
+import classNames from 'classnames';
+import { ClassNamesFn } from 'classnames/types';
+
+const style = require('components/RandomSeats/RandomSeatsCard/RandomSeatsCard.scss');
+const cx: ClassNamesFn = classNames.bind(style);
 
 const RandomSeatsContainer = () => {
+  let rowTable: string = '';
+  let columnTable: string = '';
+
   const createTable = (rows: number, columns: number) => {
     console.log(rows, columns);
     const createRows = () => {
       for (let j = 1; j <= rows; j++) {
-        return <td>{j}</td>;
+        rowTable += <td className={cx('RandomSeatsCard__card-box')}>{j}</td>;
       }
     };
     const createColumns = () => {
+      createRows();
       for (let i = 1; i <= columns; i++) {
-        return <tr>{createRows}</tr>;
+        columnTable += <tr>{rowTable}</tr>;
       }
     };
-    return <table>{createColumns}</table>;
+    createColumns();
+    console.log(rowTable, columnTable);
+    return <table className={cx('RandomSeatsCard__card')}>{columnTable}</table>;
   };
   return (
     <>

@@ -11,8 +11,8 @@ const style = require('./Main.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
 const buttonCustomStyle = {
-  width: '6rem',
-  height: '2rem',
+  width: '6.5rem',
+  height: '2.5rem',
   margin: '5px',
   fontSize: '18px',
 };
