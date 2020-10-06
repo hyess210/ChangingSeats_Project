@@ -7,24 +7,25 @@ const style = require('components/RandomSeats/RandomSeatsCard/RandomSeatsCard.sc
 const cx: ClassNamesFn = classNames.bind(style);
 
 const RandomSeatsContainer = () => {
-  let td: string;
-  let tr;
+  let rowTable: string = '';
+  let columnTable: string = '';
+
   const createTable = (rows: number, columns: number) => {
     console.log(rows, columns);
     const createRows = () => {
       for (let j = 1; j <= rows; j++) {
-        console.log('row create');
-        return (td += <td className={cx('RandomSeatsCard__card-box')}>{j}</td>);
+        rowTable += <td className={cx('RandomSeatsCard__card-box')}>{j}</td>;
       }
     };
     const createColumns = () => {
+      createRows();
       for (let i = 1; i <= columns; i++) {
-        return <tr>{createRows()}</tr>;
+        columnTable += <tr>{rowTable}</tr>;
       }
     };
-    return (
-      <table className={cx('RandomSeatsCard__card')}>{createColumns()}</table>
-    );
+    createColumns();
+    console.log(rowTable, columnTable);
+    return <table className={cx('RandomSeatsCard__card')}>{columnTable}</table>;
   };
   return (
     <>

@@ -25,6 +25,7 @@ const RandomSeatsCard = ({
   rows,
   columns,
 }: IRandomSeatsCardProps) => {
+  console.log(rows);
   return (
     <>
       <div className={cx('RandomSeatsCard')}>

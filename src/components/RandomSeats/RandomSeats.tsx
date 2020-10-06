@@ -23,12 +23,12 @@ const buttonCustomStyle = {
 };
 
 const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
-  const [rowNumber, setRowNumber] = useState<number>(2);
-  const [columnNumber, setColumnNumber] = useState<number>(5);
+  const [rowNumber, setRowNumber] = useState<number>(1);
+  const [columnNumber, setColumnNumber] = useState<number>(1);
   const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
   const [isCreateSeats, setIsCreateSeats] = useState<boolean>(false);
 
-  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsRandom(!isRandom);
   };
 
@@ -41,20 +41,24 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             <NumberInput
               minNumber={1}
               maxNumber={24}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setRowNumber(Number(e.target.value))
-              }
-              // value={rowNumber}
+              // onChange={
+              //   (e: ChangeEvent<HTMLInputElement>) =>
+              //     setRowNumber(Number(e.target.value))
+              //   // console.log(e.target.value)
+              // }
+              value={rowNumber}
+              setValue={setRowNumber}
             />
             <span style={{ margin: '20px' }}>
               칸(열)의 수
               <NumberInput
                 minNumber={1}
                 maxNumber={10}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setColumnNumber(Number(e.target.value))
-                }
-                // value={columnNumber}
+                // onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                //   setColumnNumber(Number(e.target.value))
+                // }
+                value={columnNumber}
+                setValue={setColumnNumber}
               />
             </span>
           </div>
