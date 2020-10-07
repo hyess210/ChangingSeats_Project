@@ -36,8 +36,17 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
     <>
       <div className={cx('RandomSeats__left')}>
         <div className={cx('RandomSeats__left-top')}>
+          <div className={cx('RandomSeats__left-top-des')}>
+            <p style={{ color: '#f28b30' }}>
+              교실의 책상 가로 줄과 세로 줄을 입력해주세요.
+            </p>
+            <p style={{ color: '#d9d1c7' }}>
+              책상을 생성한 후 자리를 정합니다. <br />
+              세로 줄 최대 숫자는 24, 가로 줄 최대 숫자는 10 입니다.
+            </p>
+          </div>
           <div style={{ textAlign: 'center' }}>
-            줄(행)의 수
+            세로줄의 수
             <NumberInput
               minNumber={1}
               maxNumber={24}
@@ -50,7 +59,7 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
               setValue={setRowNumber}
             />
             <span style={{ margin: '20px' }}>
-              칸(열)의 수
+              가로줄의 수
               <NumberInput
                 minNumber={1}
                 maxNumber={10}

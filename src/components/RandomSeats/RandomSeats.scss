@@ -6,9 +6,17 @@
   &__left {
     float: left;
     margin-left: 15%;
-    margin-top: 10%;
+    margin-top: 7%;
     &-top {
       height: 150px;
+      &-des {
+        text-align: center;
+        font-size: $font_title_1;
+        margin-bottom: 20px;
+        & p {
+          font-family: $NANUM-SQUARE_BOLD !important;
+        }
+      }
       &-radio {
         text-align: center;
       }
