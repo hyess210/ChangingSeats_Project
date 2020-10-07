@@ -45,7 +45,12 @@ const Main = () => {
                 </Link>
               </li>
               <li>
-                <Button children="제비 뽑기" customStyle={buttonCustomStyle} />
+                <Link to="/card-select">
+                  <Button
+                    children="제비 뽑기"
+                    customStyle={buttonCustomStyle}
+                  />
+                </Link>
               </li>
               <li>
                 <Button

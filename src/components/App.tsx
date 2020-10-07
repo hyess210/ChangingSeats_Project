@@ -1,5 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  Router,
+} from 'react-router-dom';
 import * as Pages from '../pages';
 
 const App = () => {
@@ -11,6 +17,11 @@ const App = () => {
           exact
           path="/random-seats"
           render={() => <Pages.RandomSeatsPage />}
+        />
+        <Route
+          exact
+          path="/card-select"
+          render={() => <Pages.CardSelectpage />}
         />
       </Switch>
     </BrowserRouter>
