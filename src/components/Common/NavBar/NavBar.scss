@@ -6,6 +6,7 @@
   & a {
     position: absolute;
     left: -120px;
+    top: 100px;
     transition: 0.3s;
     padding: 15px;
     width: 150px;
@@ -13,14 +14,14 @@
     color: $white !important;
     border-radius: 0 5px 5px 0;
     background-color: $main;
+    &:nth-child(2) {
+      top: 170px;
+    }
+    &:last-child {
+      top: 240px;
+    }
     &:hover {
       left: 0;
-    }
-    &:first-child {
-      top: 60px;
-    }
-    &:nth-child(2) {
-      top: 120px;
     }
   }
 }
