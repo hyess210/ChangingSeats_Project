@@ -23,6 +23,11 @@ const App = () => {
           path="/card-select"
           render={() => <Pages.CardSelectpage />}
         />
+        <Route
+          exact
+          path="/team-building"
+          render={() => <Pages.TeamBuildingPage />}
+        />
       </Switch>
     </BrowserRouter>
   );

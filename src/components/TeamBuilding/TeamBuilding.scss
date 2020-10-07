@@ -1,0 +1,30 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+.TeamBuilding {
+  font-size: $font_content_3;
+  &__left {
+    float: left;
+    margin-left: 15%;
+    margin-top: 7%;
+    &-top {
+      &-des {
+        text-align: center;
+        font-size: $font_title_1;
+        margin-bottom: 10%;
+        & p {
+          font-family: $NANUM-SQUARE_BOLD !important;
+        }
+      }
+    }
+    &-bottom {
+      & img {
+        display: block;
+        height: 400px;
+      }
+    }
+  }
+  &__right {
+    float: right;
+  }
+}
