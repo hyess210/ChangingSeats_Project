@@ -1,0 +1,38 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+.CardSelectItem {
+  text-align: center;
+  &__des {
+    margin: 10% auto 8% auto;
+    font-family: $NANUM-SQUARE_EXTRABOLD !important;
+  }
+  &__card {
+    margin: 0px auto 95px auto;
+    padding-top: 15%;
+    font-size: 3rem;
+    color: $white;
+    width: 210px;
+    height: 350px;
+    transition: 0.4s;
+    box-shadow: 0px 0px 20px rgba($color: $gray4, $alpha: 0.3);
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 10px 30px rgba($color: $gray3, $alpha: 0.4);
+    }
+    &:active {
+      background-color: transparent;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
+    }
+    &-initial {
+      @extend .CardSelectItem__card;
+      background-color: $gray2;
+    }
+    &-active {
+      @extend .CardSelectItem__card;
+      background-color: $main;
+    }
+  }
+}

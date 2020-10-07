@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
 import Button from 'components/Common/Button/Button';
 import NumberInput from 'components/Common/NumberInput/NumberInput';
+import CardSelectItem from './CardSelectItem/CardSelectItem';
 
 const style = require('./CardSelect.scss');
 const cx: ClassNamesFn = classNames.bind(style);
@@ -21,6 +22,8 @@ const buttonCustomStyle = {
 const CardSelect = () => {
   const [startNumber, setStartNumber] = useState<number>(0);
   const [endNumber, setEndNumber] = useState<number>(0);
+  const [isCreateCard, setIsCreateCard] = useState<boolean>(false);
+  const [cardValue, setCardValue] = useState<number>(0);
 
   return (
     <>
@@ -60,7 +63,9 @@ const CardSelect = () => {
         </div>
       </div>
 
-      <div className={cx('CardSelect__right')}></div>
+      <div className={cx('CardSelect__right')}>
+        <CardSelectItem value={cardValue} />
+      </div>
     </>
   );
 };
