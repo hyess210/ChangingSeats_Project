@@ -19,31 +19,44 @@ const buttonCustomStyle = {
 };
 
 const CardSelect = () => {
+  const [startNumber, setStartNumber] = useState<number>(0);
+  const [endNumber, setEndNumber] = useState<number>(0);
+
   return (
     <>
       <div className={cx('CardSelect__left')}>
-        {/* <div className={cx('CardSelect__left-top')}>
+        <div className={cx('CardSelect__left-top')}>
+          <div className={cx('CardSelect__left-top-des')}>
+            <p style={{ color: '#f28b30' }}>
+              뽑기가 시작될 숫자와 끝날 숫자를 입력해주세요.
+            </p>
+            <p style={{ color: '#d9d1c7' }}>
+              시작하는 숫자와 끝나는 숫자 사이의 수를 랜덤으로 뽑습니다. <br />
+              최소 숫자는 0이며 최대 숫자는 99입니다.
+            </p>
+          </div>
           <div style={{ textAlign: 'center' }}>
-            줄(행)의 수
+            시작하는 숫자
             <NumberInput
               minNumber={1}
               maxNumber={24}
-              value={rowNumber}
-              setValue={setRowNumber}
+              value={startNumber}
+              setValue={setStartNumber}
             />
             <span style={{ margin: '20px' }}>
-              칸(열)의 수
+              끝나는 숫자
               <NumberInput
                 minNumber={1}
                 maxNumber={10}
-                value={columnNumber}
-                setValue={setColumnNumber}
+                value={endNumber}
+                setValue={setEndNumber}
               />
             </span>
           </div>
-        </div> */}
+        </div>
         <div className={cx('CardSelect__left-bottom')}>
           <img src={CARDSELECT_IMG} alt="자리 뽑기" />
+          <Button children="뽑기 시작" customStyle={buttonCustomStyle} />
         </div>
       </div>
 

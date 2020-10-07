@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
+import NavBar from '../NavBar/NavBar';
 
 const style = require('./PageTemplate.scss');
 const cx: ClassNamesFn = classNames.bind(style);
@@ -16,6 +17,7 @@ const PageTemplate = ({ children }: IPageTemplateProps) => {
     <div className={cx('PageTemplate')}>
       <nav className={cx('PageTemplate__header')}>
         <Link to="/">자리 바꿔주세요!</Link>
+        <NavBar />
       </nav>
       {children && children}
     </div>

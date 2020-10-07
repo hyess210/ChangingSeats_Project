@@ -1,0 +1,27 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+.NavBar {
+  font-size: $font_content_3;
+  & a {
+    position: absolute;
+    left: -120px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 150px;
+    text-decoration: none;
+    color: $white !important;
+    border-radius: 0 5px 5px 0;
+    background-color: $main;
+    &:hover {
+      left: 0;
+      background-color: $main_active;
+    }
+    &:first-child {
+      top: 60px;
+    }
+    &:nth-child(2) {
+      top: 120px;
+    }
+  }
+}
