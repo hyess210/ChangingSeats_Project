@@ -9,6 +9,7 @@ const cx: ClassNamesFn = classNames.bind(style);
 
 interface ICardSelectItemProps {
   value: number;
+  endNumber: number;
 }
 
 const buttonCustomStyle = {
@@ -18,7 +19,25 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const CardSelectItem = ({ value }: ICardSelectItemProps) => {
+const CardSelectItem = ({ value, endNumber }: ICardSelectItemProps) => {
+  const CardBox = () => {
+    let count: number = 0;
+    return (
+      <div
+        className={cx('CardSelectItem__card-active', {
+          'CardSelectItem__card-initial': value === -1,
+        })}
+        onClick={() => count++}
+      >
+        {value === -1 ? (
+          <div className={cx('CardSelectItem__card-line')}>?</div>
+        ) : (
+          <div className={cx('CardSelectItem__card-line')}>{value}</div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <>
       <div className={cx('CardSelectItem')}>
@@ -30,13 +49,7 @@ const CardSelectItem = ({ value }: ICardSelectItemProps) => {
             카드를 클릭하여 한장씩 뽑아보세요.
           </p>
         </div>
-        <div
-          className={cx('CardSelectItem__card-initial', {
-            'CardSelectItem__card-active': value,
-          })}
-        >
-          {value}
-        </div>
+        <CardBox />
         <Button children="한번에 공개하기" customStyle={buttonCustomStyle} />
       </div>
     </>

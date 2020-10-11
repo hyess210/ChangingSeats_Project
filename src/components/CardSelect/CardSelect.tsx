@@ -23,7 +23,7 @@ const CardSelect = () => {
   const [startNumber, setStartNumber] = useState<number>(0);
   const [endNumber, setEndNumber] = useState<number>(0);
   const [isCreateCard, setIsCreateCard] = useState<boolean>(false);
-  const [cardValue, setCardValue] = useState<number>(0);
+  const [cardValue, setCardValue] = useState<number>(-1);
 
   return (
     <>
@@ -64,7 +64,7 @@ const CardSelect = () => {
       </div>
 
       <div className={cx('CardSelect__right')}>
-        <CardSelectItem value={cardValue} />
+        <CardSelectItem value={cardValue} endNumber={endNumber} />
       </div>
     </>
   );
