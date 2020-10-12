@@ -25,8 +25,7 @@ $outline_tertiary_color: rgba($black, $background_color_transparent);
 
 @mixin buttonEvent($event_color) {
   &:hover {
-    background-color: $event_color;
-    box-shadow: 0.19rem 0.19rem rgba($event_color, 0.2);
+    box-shadow: 0.19rem 0.19rem rgba($event_color, 0.4);
   }
 
   &:active {

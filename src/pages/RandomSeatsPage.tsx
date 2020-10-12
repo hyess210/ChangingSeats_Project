@@ -2,7 +2,7 @@ import React from 'react';
 import PageTemplate from 'components/Common/PageTemplate/PageTemplate';
 import RandomSeatsContainer from 'containers/RandomSeatsContaier/RandomSeatsContainer';
 
-const MainPage = () => {
+const RandomSeatPage = () => {
   return (
     <PageTemplate>
       <RandomSeatsContainer />
@@ -10,4 +10,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default RandomSeatPage;
