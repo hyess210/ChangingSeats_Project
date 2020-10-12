@@ -8,8 +8,10 @@ const style = require('./CardSelectItem.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
 interface ICardSelectItemProps {
-  value: number;
+  startNumber: number;
   endNumber: number;
+  cardValue: number;
+  onClick: () => void;
 }
 
 const buttonCustomStyle = {
@@ -19,21 +21,28 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const CardSelectItem = ({ value, endNumber }: ICardSelectItemProps) => {
+const CardSelectItem = ({
+  startNumber,
+  endNumber,
+  cardValue,
+  onClick,
+}: ICardSelectItemProps) => {
   const CardBox = () => {
-    let count: number = 0;
     return (
       <div
         className={cx('CardSelectItem__card-active', {
-          'CardSelectItem__card-initial': value === -1,
+          'CardSelectItem__card-initial': cardValue === -1,
         })}
-        onClick={() => count++}
+        onClick={() => onClick()}
       >
-        {value === -1 ? (
+        {/* {cardValue === -1 ? (
           <div className={cx('CardSelectItem__card-line')}>?</div>
         ) : (
-          <div className={cx('CardSelectItem__card-line')}>{value}</div>
-        )}
+          <div className={cx('CardSelectItem__card-line')}>{cardValue}</div>
+        )} */}
+        <div className={cx('CardSelectItem__card-line')}>
+          {cardValue === -1 ? <>?</> : <>{cardValue}</>}
+        </div>
       </div>
     );
   };

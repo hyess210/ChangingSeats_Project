@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import CARDSELECT_IMG from 'assets/images/CardSelect/CARD_SELECT.png';
 
 import classNames from 'classnames';
@@ -10,7 +10,14 @@ import CardSelectItem from './CardSelectItem/CardSelectItem';
 const style = require('./CardSelect.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
-interface ICardSelectProps {}
+interface ICardSelectProps {
+  startNumber: number;
+  setStartNumber: Dispatch<SetStateAction<number>>;
+  endNumber: number;
+  setEndNumber: Dispatch<SetStateAction<number>>;
+  cardValue: number;
+  handleRandomCardValue: () => void;
+}
 
 const buttonCustomStyle = {
   width: '6.5rem',
@@ -19,11 +26,23 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const CardSelect = () => {
-  const [startNumber, setStartNumber] = useState<number>(0);
-  const [endNumber, setEndNumber] = useState<number>(0);
+const CardSelect = ({
+  startNumber,
+  setStartNumber,
+  endNumber,
+  setEndNumber,
+  cardValue,
+  handleRandomCardValue,
+}: ICardSelectProps) => {
   const [isCreateCard, setIsCreateCard] = useState<boolean>(false);
-  const [cardValue, setCardValue] = useState<number>(-1);
+
+  const handleCreateCard = (startNumber: number, endNumber: number) => {
+    if (startNumber > endNumber || startNumber === endNumber) {
+      alert('시작하는 숫자보다 끝나는 숫자가 작거나 같을 수 없습니다.');
+    } else {
+      setIsCreateCard(!isCreateCard);
+    }
+  };
 
   return (
     <>
@@ -69,7 +88,7 @@ const CardSelect = () => {
             <Button
               children="뽑기 시작"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateCard(!isCreateCard)}
+              handleFunction={() => handleCreateCard(startNumber, endNumber)}
             />
           )}
         </div>
@@ -77,7 +96,12 @@ const CardSelect = () => {
 
       <div className={cx('CardSelect__right')}>
         {isCreateCard ? (
-          <CardSelectItem value={cardValue} endNumber={endNumber} />
+          <CardSelectItem
+            startNumber={startNumber}
+            endNumber={endNumber}
+            cardValue={cardValue}
+            onClick={handleRandomCardValue}
+          />
         ) : (
           <></>
         )}
