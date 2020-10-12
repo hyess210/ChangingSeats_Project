@@ -59,12 +59,28 @@ const CardSelect = () => {
         </div>
         <div className={cx('CardSelect__left-bottom')}>
           <img src={CARDSELECT_IMG} alt="자리 뽑기" />
-          <Button children="뽑기 시작" customStyle={buttonCustomStyle} />
+          {isCreateCard ? (
+            <Button
+              children="다시 시작"
+              customStyle={buttonCustomStyle}
+              handleFunction={() => setIsCreateCard(!isCreateCard)}
+            />
+          ) : (
+            <Button
+              children="뽑기 시작"
+              customStyle={buttonCustomStyle}
+              handleFunction={() => setIsCreateCard(!isCreateCard)}
+            />
+          )}
         </div>
       </div>
 
       <div className={cx('CardSelect__right')}>
-        <CardSelectItem value={cardValue} endNumber={endNumber} />
+        {isCreateCard ? (
+          <CardSelectItem value={cardValue} endNumber={endNumber} />
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

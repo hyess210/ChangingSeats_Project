@@ -92,15 +92,15 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
           <img src={RANDOMSEATS_IMG} alt="자리 뽑기" />
           {isCreateSeats ? (
             <Button
-              children="다시 생성"
+              children="다시 시작"
               customStyle={buttonCustomStyle}
-              handleFunction={() => createTable(rowNumber, columnNumber)}
+              handleFunction={() => setIsCreateSeats(!isCreateSeats)}
             />
           ) : (
             <Button
               children="자리 생성"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateSeats(true)}
+              handleFunction={() => setIsCreateSeats(!isCreateSeats)}
             />
           )}
         </div>
