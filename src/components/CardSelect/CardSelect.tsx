@@ -16,6 +16,8 @@ interface ICardSelectProps {
   endNumber: number;
   setEndNumber: Dispatch<SetStateAction<number>>;
   cardValue: number;
+  setCardValue: Dispatch<SetStateAction<number>>;
+  selectedCardArray: number[];
   handleRandomCardValue: () => void;
 }
 
@@ -32,6 +34,8 @@ const CardSelect = ({
   endNumber,
   setEndNumber,
   cardValue,
+  setCardValue,
+  selectedCardArray,
   handleRandomCardValue,
 }: ICardSelectProps) => {
   const [isCreateCard, setIsCreateCard] = useState<boolean>(false);
@@ -42,6 +46,11 @@ const CardSelect = ({
     } else {
       setIsCreateCard(!isCreateCard);
     }
+  };
+
+  const handleCreateCardAgain = () => {
+    setIsCreateCard(!isCreateCard);
+    setCardValue(-1);
   };
 
   return (
@@ -61,17 +70,19 @@ const CardSelect = ({
             시작하는 숫자
             <NumberInput
               minNumber={1}
-              maxNumber={24}
+              maxNumber={98}
               value={startNumber}
               setValue={setStartNumber}
+              isBlock={isCreateCard}
             />
             <span style={{ margin: '20px' }}>
               끝나는 숫자
               <NumberInput
                 minNumber={1}
-                maxNumber={10}
+                maxNumber={99}
                 value={endNumber}
                 setValue={setEndNumber}
+                isBlock={isCreateCard}
               />
             </span>
           </div>
@@ -82,7 +93,7 @@ const CardSelect = ({
             <Button
               children="다시 시작"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateCard(!isCreateCard)}
+              handleFunction={() => handleCreateCardAgain()}
             />
           ) : (
             <Button
@@ -101,6 +112,7 @@ const CardSelect = ({
             endNumber={endNumber}
             cardValue={cardValue}
             onClick={handleRandomCardValue}
+            selectedCardArray={selectedCardArray}
           />
         ) : (
           <></>

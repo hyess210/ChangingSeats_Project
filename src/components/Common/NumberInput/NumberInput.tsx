@@ -11,14 +11,15 @@ interface INumberInput {
   // onChange: any;
   value: number;
   setValue: Dispatch<SetStateAction<number>>;
+  isBlock: boolean;
 }
 
 const NumberInput = ({
   minNumber,
   maxNumber,
-  // onChange,
   value,
   setValue,
+  isBlock,
 }: INumberInput) => {
   return (
     <input
@@ -29,7 +30,9 @@ const NumberInput = ({
         setValue(parseInt(e.target.value))
       }
       value={value}
-      className={cx(`NumberInput`)}
+      className={cx('NumberInput', {
+        NumberInput__block: isBlock,
+      })}
     />
   );
 };

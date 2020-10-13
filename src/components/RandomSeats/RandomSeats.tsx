@@ -50,13 +50,9 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             <NumberInput
               minNumber={1}
               maxNumber={24}
-              // onChange={
-              //   (e: ChangeEvent<HTMLInputElement>) =>
-              //     setRowNumber(Number(e.target.value))
-              //   // console.log(e.target.value)
-              // }
               value={rowNumber}
               setValue={setRowNumber}
+              isBlock={isCreateSeats}
             />
             <span style={{ margin: '20px' }}>
               가로줄의 수
@@ -68,6 +64,7 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
                 // }
                 value={columnNumber}
                 setValue={setColumnNumber}
+                isBlock={isCreateSeats}
               />
             </span>
           </div>

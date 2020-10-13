@@ -7,6 +7,7 @@ const CardSelectContainer = () => {
   const [endNumber, setEndNumber] = useState<number>(1);
 
   let cardValueArray: number[] = new Array(endNumber);
+  let selectedCardArray: number[] = [];
 
   for (let i = startNumber; i <= endNumber; i++) {
     cardValueArray[i] = i;
@@ -32,6 +33,8 @@ const CardSelectContainer = () => {
       endNumber={endNumber}
       setEndNumber={setEndNumber}
       cardValue={cardValue}
+      setCardValue={setCardValue}
+      selectedCardArray={selectedCardArray}
       handleRandomCardValue={handleRandomCardValue}
     />
   );

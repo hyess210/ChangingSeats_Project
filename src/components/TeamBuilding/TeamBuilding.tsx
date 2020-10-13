@@ -43,6 +43,7 @@ const TeamBuilding = () => {
               maxNumber={80}
               value={studentNumber}
               setValue={setStudentNumber}
+              isBlock={true}
             />
             <span style={{ marginLeft: '20px' }}>
               모둠 수
@@ -51,6 +52,7 @@ const TeamBuilding = () => {
                 maxNumber={20}
                 value={teamNumber}
                 setValue={setTeamNumber}
+                isBlock={true}
               />
             </span>
             <span style={{ marginLeft: '20px' }}>
@@ -60,6 +62,7 @@ const TeamBuilding = () => {
                 maxNumber={30}
                 value={memberNumber}
                 setValue={setMemberNumber}
+                isBlock={true}
               />
             </span>
           </div>

@@ -2,7 +2,7 @@
 @import 'styles/typography/typography_Scheme.scss';
 
 .NumberInput {
-  color: $black;
+  color: $gray4;
   border: 1.5px solid $gray2;
   border-radius: 3px;
   background-color: transparent;
@@ -12,7 +12,12 @@
   font-size: $font_content_3;
   font-family: $NANUM_SQUARE_BOLD;
   margin-left: 15px;
+  padding-top: 3px;
   &:focus {
     outline: none;
+  }
+  &__block {
+    color: $gray2;
+    pointer-events: none;
   }
 }

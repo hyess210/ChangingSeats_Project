@@ -12,6 +12,7 @@ interface ICardSelectItemProps {
   endNumber: number;
   cardValue: number;
   onClick: () => void;
+  selectedCardArray: number[];
 }
 
 const buttonCustomStyle = {
@@ -26,7 +27,16 @@ const CardSelectItem = ({
   endNumber,
   cardValue,
   onClick,
+  selectedCardArray,
 }: ICardSelectItemProps) => {
+  const AllCardBox = () => {
+    return (
+      <div className={cx('CardSelectItem__allCard')}>
+        <div className={cx('CardSelectItem__allCard-card')}></div>
+      </div>
+    );
+  };
+
   const CardBox = () => {
     return (
       <div
