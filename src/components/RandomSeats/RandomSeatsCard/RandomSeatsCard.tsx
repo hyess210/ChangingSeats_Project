@@ -30,12 +30,9 @@ const RandomSeatsCard = ({
       <div className={cx('RandomSeatsCard')}>
         <div className={cx('RandomSeatsCard__base')}>교탁</div>
         <div className={cx('RandomSeatsCard__seats')}>
-          {createTable(rows, columns)}
-          {/* <table className={cx('RandomSeatsCard__card')}>
-          <tr>
-            <th>20</th>
-          </tr>
-        </table> */}
+          <table>
+          {() => createTable(rows, columns)}
+          </table>
         </div>
         <Button
           children="자리 공개"
