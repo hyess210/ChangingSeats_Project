@@ -5,24 +5,28 @@ const CardSelectContainer = () => {
   const [cardValue, setCardValue] = useState<number>(-1);
   const [startNumber, setStartNumber] = useState<number>(0);
   const [endNumber, setEndNumber] = useState<number>(1);
+  let selectedCardArray: number[] = [];
+    console.log('container2');
 
   let cardValueArray: number[] = new Array(endNumber);
-  let selectedCardArray: number[] = [];
+  let count: number = 0;
 
   for (let i = startNumber; i <= endNumber; i++) {
     cardValueArray[i] = i;
   }
 
+  // const getRandom = (max: number, min: number) => {
+  //   return Math.floor(Math.random() * (max - min + 1) + min);
+  // };
   const handleRandomCardValue = () => {
-    let count: number = 0;
-    console.log('onClick');
-    if (cardValueArray.length === count) {
-      setCardValue(-2);
-    } else {
-      setCardValue(
-        Math.floor(Math.random() * cardValueArray.length + startNumber)
-      );
-    }
+    console.log(count);
+    cardValueArray.length === count ?
+    setCardValue(2202)
+    :
+    setCardValue(
+      Math.floor(Math.random() * cardValueArray.length + startNumber)
+    );
+    selectedCardArray = selectedCardArray.concat(cardValue);
     count++;
   };
 
@@ -34,7 +38,6 @@ const CardSelectContainer = () => {
       setEndNumber={setEndNumber}
       cardValue={cardValue}
       setCardValue={setCardValue}
-      selectedCardArray={selectedCardArray}
       handleRandomCardValue={handleRandomCardValue}
     />
   );

@@ -11,8 +11,8 @@ const RandomSeatsContainer = () => {
   let columnTable: string = '';
 
   const createTable = (rows: number, columns: number) => {
-    console.log(rows, columns);
     const createRows = () => {
+      console.log(rowTable);
       for (let j = 1; j <= rows; j++) {
         rowTable += <td className={cx('RandomSeatsCard__card-box')}>{j}</td>;
       }
@@ -24,7 +24,6 @@ const RandomSeatsContainer = () => {
       }
     };
     createColumns();
-    console.log(rowTable, columnTable);
     return <table className={cx('RandomSeatsCard__card')}>{columnTable}</table>;
   };
   return (

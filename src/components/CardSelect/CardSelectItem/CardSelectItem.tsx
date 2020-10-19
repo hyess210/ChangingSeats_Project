@@ -11,8 +11,7 @@ interface ICardSelectItemProps {
   startNumber: number;
   endNumber: number;
   cardValue: number;
-  onClick: () => void;
-  selectedCardArray: number[];
+  // onClick: () => void;
 }
 
 const buttonCustomStyle = {
@@ -26,8 +25,7 @@ const CardSelectItem = ({
   startNumber,
   endNumber,
   cardValue,
-  onClick,
-  selectedCardArray,
+  // onClick,
 }: ICardSelectItemProps) => {
   const AllCardBox = () => {
     return (
@@ -40,10 +38,7 @@ const CardSelectItem = ({
   const CardBox = () => {
     return (
       <div
-        className={cx('CardSelectItem__card-active', {
-          'CardSelectItem__card-initial': cardValue === -1,
-        })}
-        onClick={() => onClick()}
+        className={cx('CardSelectItem__card-active')}
       >
         {/* {cardValue === -1 ? (
           <div className={cx('CardSelectItem__card-line')}>?</div>
@@ -68,8 +63,11 @@ const CardSelectItem = ({
             카드를 클릭하여 한장씩 뽑아보세요.
           </p>
         </div>
-        <CardBox />
-        <Button children="한번에 공개하기" customStyle={buttonCustomStyle} />
+
+          <div>
+          <CardBox />
+        </div>
+        {/* <Button children="한번에 공개하기" customStyle={buttonCustomStyle} /> */}
       </div>
     </>
   );

@@ -32,6 +32,17 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
     setIsRandom(!isRandom);
   };
 
+  const handleCreateSeat = () => {
+    setIsCreateSeats(!isCreateSeats);
+    createTable(rowNumber,columnNumber);
+  }
+  
+  const handleAgainCreateSeat = () => {
+    setRowNumber(1);
+    setColumnNumber(1);
+    setIsCreateSeats(!isCreateSeats);
+  }
+
   return (
     <>
       <div className={cx('RandomSeats__left')}>
@@ -91,13 +102,13 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             <Button
               children="다시 시작"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateSeats(!isCreateSeats)}
+              handleFunction={() => handleAgainCreateSeat()}
             />
           ) : (
             <Button
               children="자리 생성"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateSeats(!isCreateSeats)}
+              handleFunction={() => handleCreateSeat()}
             />
           )}
         </div>

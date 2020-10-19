@@ -17,7 +17,7 @@ interface ICardSelectProps {
   setEndNumber: Dispatch<SetStateAction<number>>;
   cardValue: number;
   setCardValue: Dispatch<SetStateAction<number>>;
-  selectedCardArray: number[];
+  // selectedCardArray: number[];
   handleRandomCardValue: () => void;
 }
 
@@ -35,7 +35,7 @@ const CardSelect = ({
   setEndNumber,
   cardValue,
   setCardValue,
-  selectedCardArray,
+  // selectedCardArray,
   handleRandomCardValue,
 }: ICardSelectProps) => {
   const [isCreateCard, setIsCreateCard] = useState<boolean>(false);
@@ -43,6 +43,8 @@ const CardSelect = ({
   const handleCreateCard = (startNumber: number, endNumber: number) => {
     if (startNumber > endNumber || startNumber === endNumber) {
       alert('시작하는 숫자보다 끝나는 숫자가 작거나 같을 수 없습니다.');
+    } else if (endNumber > 99 || startNumber < 0) {
+      alert('입력 가능한 숫자 범위를 벗어났습니다.');
     } else {
       setIsCreateCard(!isCreateCard);
     }
@@ -107,13 +109,15 @@ const CardSelect = ({
 
       <div className={cx('CardSelect__right')}>
         {isCreateCard ? (
+          <div onClick={() => handleRandomCardValue()}>
           <CardSelectItem
             startNumber={startNumber}
             endNumber={endNumber}
             cardValue={cardValue}
-            onClick={handleRandomCardValue}
-            selectedCardArray={selectedCardArray}
+            // onClick={handleRandomCardValue}
+            // selectedCardArray={selectedCardArray}
           />
+          </div>
         ) : (
           <></>
         )}
