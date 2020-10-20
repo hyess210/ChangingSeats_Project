@@ -7,24 +7,24 @@ const style = require('components/RandomSeats/RandomSeatsCard/RandomSeatsCard.sc
 const cx: ClassNamesFn = classNames.bind(style);
 
 const RandomSeatsContainer = () => {
-  const [tag, setTag] = useState<JSX.Element[]>([]);
+    let tableTag: string = '<table>';
+    // let result: string = '';
+    const [result, setResult] = useState<string>('');
   const createTable = (rows: number, columns: number) => {
-    console.log(rows, columns);
-    const tdTable = () => {
-      for(let i = 0; i<= columns; i++) {
-        console.log('p');
-      // return <td>{i}</td>
+    for ( let j = 1; j <= rows; j++) {
+      tableTag += '<tr>';
+      for ( let i = 1; i <= columns; i++) {
+        tableTag += ('<td>'+j+'</td>');
       }
+      tableTag += '</tr>';
     }
-    // let tag: string = '';
-    for (let j = 1; j <= rows; j++) {
-        console.log('p');
-    setTag([...tag, <tr></tr>]);
-    }
+  setResult(tableTag+'</table>');
+    // return tableTag += '</table>';
   };
+  console.log(result);
   return (
     <>
-      <RandomSeats createTable={createTable} />
+      <RandomSeats createTable={createTable} tableTag={result}/>
     </>
   );
 };

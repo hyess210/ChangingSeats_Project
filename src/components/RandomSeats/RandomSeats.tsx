@@ -13,6 +13,7 @@ const cx: ClassNamesFn = classNames.bind(style);
 
 interface IRandomSeatsProps {
   createTable: (arg0: number, arg1: number) => void;
+  tableTag: string;
 }
 
 const buttonCustomStyle = {
@@ -22,7 +23,7 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
+const RandomSeats = ({ createTable, tableTag }: IRandomSeatsProps) => {
   const [rowNumber, setRowNumber] = useState<number>(1);
   const [columnNumber, setColumnNumber] = useState<number>(1);
   const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
@@ -40,7 +41,7 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
   const handleAgainCreateSeat = () => {
     setRowNumber(1);
     setColumnNumber(1);
-    setIsCreateSeats(!isCreateSeats);
+    handleCreateSeat();
   }
 
   return (
@@ -120,6 +121,7 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             createTable={createTable}
             rows={rowNumber}
             columns={columnNumber}
+            tableTag={tableTag}
           />
         ) : (
           <></>

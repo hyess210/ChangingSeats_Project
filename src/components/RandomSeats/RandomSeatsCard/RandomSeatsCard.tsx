@@ -11,6 +11,7 @@ interface IRandomSeatsCardProps {
   createTable: (arg0: number, arg1: number) => void;
   rows: number;
   columns: number;
+  tableTag: string;
 }
 
 const buttonCustomStyle = {
@@ -24,15 +25,14 @@ const RandomSeatsCard = ({
   createTable,
   rows,
   columns,
+  tableTag
 }: IRandomSeatsCardProps) => {
   return (
     <>
       <div className={cx('RandomSeatsCard')}>
         <div className={cx('RandomSeatsCard__base')}>교탁</div>
-        <div className={cx('RandomSeatsCard__seats')}>
-          <table>
-          {() => createTable(rows, columns)}
-          </table>
+        <div className={cx('RandomSeatsCard__seats')}
+          dangerouslySetInnerHTML={{__html: tableTag}}>
         </div>
         <Button
           children="자리 공개"
