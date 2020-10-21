@@ -15,13 +15,25 @@
     margin: 10% auto 8% auto;
   }
   &__seats {
-    background-color: #f2f2f2;
     min-height: 500px;
     text-align: center;
-    &-table {
+    & table {
       width: 100%;
       height: auto;
-      background-color: red;
+      & tr td {
+        text-align: center;
+        height: 120px;
+        & div {
+          margin: auto;
+          background-color: $main;
+          color: $white;
+          font-size: $font_title_4;
+          padding-top: 20px;
+          height: 90px;
+          width: 70%;
+          border-radius: 7px;
+        }
+      }
     }
   }
   &__card {

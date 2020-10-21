@@ -8,18 +8,16 @@ const cx: ClassNamesFn = classNames.bind(style);
 
 const RandomSeatsContainer = () => {
     let tableTag: string = '<table>';
-    // let result: string = '';
     const [result, setResult] = useState<string>('');
   const createTable = (rows: number, columns: number) => {
     for ( let j = 1; j <= rows; j++) {
       tableTag += '<tr>';
       for ( let i = 1; i <= columns; i++) {
-        tableTag += ('<td>'+j+'</td>');
+        tableTag += ('<td>'+'<div>'+j+','+i+'</div>'+'</td>');
       }
       tableTag += '</tr>';
     }
   setResult(tableTag+'</table>');
-    // return tableTag += '</table>';
   };
   console.log(result);
   return (

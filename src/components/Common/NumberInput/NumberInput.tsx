@@ -13,7 +13,6 @@ interface INumberInput {
   setValue: Dispatch<SetStateAction<number>>;
   isBlock: boolean;
 }
-
 const NumberInput = ({
   minNumber,
   maxNumber,
@@ -21,13 +20,17 @@ const NumberInput = ({
   setValue,
   isBlock,
 }: INumberInput) => {
+
+const settingValue = ( e : ChangeEvent<HTMLInputElement>) => {
+  !value ? setValue(0) : setValue(parseInt(e.target.value))
+}
+
   return (
     <input
       type="number"
       min={minNumber}
       max={maxNumber}
-      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-        setValue(parseInt(e.target.value))
+      onChange={(e: ChangeEvent<HTMLInputElement>) => settingValue(e)
       }
       value={value}
       className={cx('NumberInput', {

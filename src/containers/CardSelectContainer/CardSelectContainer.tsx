@@ -4,20 +4,17 @@ import CardSelect from 'components/CardSelect/CardSelect';
 const CardSelectContainer = () => {
   const [cardValue, setCardValue] = useState<number>(-1);
   const [startNumber, setStartNumber] = useState<number>(0);
-  const [endNumber, setEndNumber] = useState<number>(1);
+  const [endNumber, setEndNumber] = useState<number>(0);
   let selectedCardArray: number[] = [];
-    console.log('container2');
+    console.log(endNumber);
 
-  let cardValueArray: number[] = new Array(endNumber);
+  let cardValueArray: number[] = new Array(endNumber );
   let count: number = 0;
 
   for (let i = startNumber; i <= endNumber; i++) {
-    cardValueArray[i] = i;
+    cardValueArray[i] = i;;
   }
 
-  // const getRandom = (max: number, min: number) => {
-  //   return Math.floor(Math.random() * (max - min + 1) + min);
-  // };
   const handleRandomCardValue = () => {
     console.log(count);
     cardValueArray.length === count ?
