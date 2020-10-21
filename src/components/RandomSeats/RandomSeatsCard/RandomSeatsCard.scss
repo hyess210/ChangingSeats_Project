@@ -28,8 +28,10 @@
           background-color: $main;
           color: $white;
           font-size: $font_title_4;
-          padding-top: 20px;
+          padding-top: 25px;
           height: 90px;
+          min-width: 100px;
+          max-width: 200px;
           width: 70%;
           border-radius: 7px;
         }

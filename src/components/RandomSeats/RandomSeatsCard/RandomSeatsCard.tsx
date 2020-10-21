@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, Dispatch, SetStateAction } from 'react';
 
 import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
@@ -12,6 +12,8 @@ interface IRandomSeatsCardProps {
   rows: number;
   columns: number;
   tableTag: string;
+  isSeatHidden: boolean;
+  setIsSeatHidden: Dispatch<SetStateAction<boolean>>;
 }
 
 const buttonCustomStyle = {
@@ -25,8 +27,14 @@ const RandomSeatsCard = ({
   createTable,
   rows,
   columns,
-  tableTag
+  tableTag,
+  isSeatHidden,
+  setIsSeatHidden
 }: IRandomSeatsCardProps) => {
+  const handleShowSeatClick = () => {
+    setIsSeatHidden(true);
+    createTable(rows,columns);
+  }
   return (
     <>
       <div className={cx('RandomSeatsCard')}>
@@ -38,7 +46,7 @@ const RandomSeatsCard = ({
           children="자리 공개"
           customStyle={buttonCustomStyle}
           appearance="outline"
-          // handleFunction={() => }
+          handleFunction={() => handleShowSeatClick()}
         />
         <span style={{ float: 'right' }}>
           <Button
