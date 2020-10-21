@@ -53,10 +53,12 @@ const Main = () => {
                 </Link>
               </li>
               <li>
+                <Link to='/team-building'>
                 <Button
                   children="모둠 정하기"
                   customStyle={buttonCustomStyle}
                 />
+                </Link>
               </li>
             </ul>
           </div>

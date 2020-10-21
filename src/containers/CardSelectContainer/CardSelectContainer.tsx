@@ -6,7 +6,6 @@ const CardSelectContainer = () => {
   const [startNumber, setStartNumber] = useState<number>(0);
   const [endNumber, setEndNumber] = useState<number>(0);
   let selectedCardArray: number[] = [];
-    console.log(endNumber);
 
   let cardValueArray: number[] = new Array(endNumber );
   let count: number = 0;
@@ -16,7 +15,6 @@ const CardSelectContainer = () => {
   }
 
   const handleRandomCardValue = () => {
-    console.log(count);
     cardValueArray.length === count ?
     setCardValue(2202)
     :
