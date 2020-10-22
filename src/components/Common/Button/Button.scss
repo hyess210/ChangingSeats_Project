@@ -73,6 +73,7 @@ $outline_tertiary_color: rgba($black, $background_color_transparent);
   &-disable {
     @include buttonBasic($white, rgba($gray2, $background_color_transparent));
     @include buttonEvent($gray3);
+    pointer-events: none;
   }
 
   // Outline Btn

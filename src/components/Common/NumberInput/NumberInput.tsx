@@ -22,7 +22,7 @@ const NumberInput = ({
 }: INumberInput) => {
 
 const settingValue = ( e : ChangeEvent<HTMLInputElement>) => {
-  !value ? setValue(0) : setValue(parseInt(e.target.value))
+  !e.target.value ? setValue(0) : setValue(parseInt(e.target.value))
 }
 
   return (

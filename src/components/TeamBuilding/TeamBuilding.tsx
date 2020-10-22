@@ -20,6 +20,11 @@ const TeamBuilding = () => {
   const [studentNumber, setStudentNumber] = useState<number>(2);
   const [teamNumber, setTeamNumber] = useState<number>(2);
   const [memberNumber, setMemberNumber] = useState<number>(1);
+  const [isBlock, setIsBlock] = useState<boolean>(false);
+
+  const handleCreateTeam = () => {
+    setIsBlock(true);
+  }
 
   return (
     <>
@@ -43,7 +48,7 @@ const TeamBuilding = () => {
               maxNumber={80}
               value={studentNumber}
               setValue={setStudentNumber}
-              isBlock={true}
+              isBlock={isBlock}
             />
             <span style={{ marginLeft: '20px' }}>
               모둠 수
@@ -52,7 +57,7 @@ const TeamBuilding = () => {
                 maxNumber={20}
                 value={teamNumber}
                 setValue={setTeamNumber}
-                isBlock={true}
+                isBlock={isBlock}
               />
             </span>
             <span style={{ marginLeft: '20px' }}>
@@ -62,16 +67,24 @@ const TeamBuilding = () => {
                 maxNumber={30}
                 value={memberNumber}
                 setValue={setMemberNumber}
-                isBlock={true}
+                isBlock={isBlock}
               />
             </span>
           </div>
           <img src={TEAM_BUILDING_IMG} alt="모둠 정하기" />
-          <Button children="뽑기 시작" customStyle={buttonCustomStyle} />
+          <Button 
+          children="뽑기 시작" 
+          customStyle={buttonCustomStyle}
+          handleFunction={() => handleCreateTeam()}
+           />
         </div>
       </div>
 
-      <div className={cx('TeamBuilding__right')}></div>
+      <div className={cx('TeamBuilding__right')}>
+        {
+          // isBlock ? 
+        }
+      </div>
     </>
   );
 };

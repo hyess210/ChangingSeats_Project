@@ -42,12 +42,31 @@ const RandomSeatsCard = ({
         <div className={cx('RandomSeatsCard__seats')}
           dangerouslySetInnerHTML={{__html: tableTag}}>
         </div>
-        <Button
-          children="자리 공개"
-          customStyle={buttonCustomStyle}
-          appearance="outline"
-          handleFunction={() => handleShowSeatClick()}
-        />
+        {
+          isSeatHidden ?
+          <Button
+            children="자리 공개"
+            customStyle={buttonCustomStyle}
+            appearance="disable"
+            handleFunction={() => handleShowSeatClick()}
+          /> :
+          <Button
+            children="자리 공개"
+            customStyle={buttonCustomStyle}
+            appearance="outline"
+            handleFunction={() => handleShowSeatClick()}
+          />
+        }
+        {
+          isSeatHidden ?
+        <span style={{ float: 'right' }}>
+          <Button
+            children="다시 배치"
+            customStyle={buttonCustomStyle}
+            appearance="outline"
+            // handleFunction={() => }
+          />
+        </span> :
         <span style={{ float: 'right' }}>
           <Button
             children="다시 배치"
@@ -56,6 +75,7 @@ const RandomSeatsCard = ({
             // handleFunction={() => }
           />
         </span>
+        }
       </div>
     </>
   );

@@ -16,8 +16,9 @@ const RandomSeatsContainer = () => {
   const createTable = (rows: number, columns: number) => {
     const studentNumber:number = rows * columns;
     const searchDuplicate = ( num: number) => {
+      console.log(num);
       for(let k = 0; k <= seatValueArray.length; k++) {
-        if (num === seatValueArray[k]) {
+        if (num === seatValueArray[k]) {  
           return '';
         } else {
           setSeatValueArray([...seatValueArray, num])

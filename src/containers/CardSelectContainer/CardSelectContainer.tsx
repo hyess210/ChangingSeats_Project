@@ -16,7 +16,7 @@ const CardSelectContainer = () => {
 
   const handleRandomCardValue = () => {
     cardValueArray.length === count ?
-    setCardValue(2202)
+    setCardValue(-1)
     :
     setCardValue(
       Math.floor(Math.random() * cardValueArray.length + startNumber)
