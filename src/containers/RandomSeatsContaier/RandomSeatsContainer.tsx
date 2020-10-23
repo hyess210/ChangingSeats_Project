@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import RandomSeats from 'components/RandomSeats/RandomSeats';
-import classNames from 'classnames';
-import { ClassNamesFn } from 'classnames/types';
-
-const style = require('components/RandomSeats/RandomSeatsCard/RandomSeatsCard.scss');
-const cx: ClassNamesFn = classNames.bind(style);
 
 const RandomSeatsContainer = () => {
     let tableTag: string = '<table>';
     const [result, setResult] = useState<string>('');
     const [isSeatHidden, setIsSeatHidden] = useState<boolean>(false);
     const [seatValueArray, setSeatValueArray] = useState<number[]>([]);
-    // const [isDuplicate, setIsDuplicate] = useState<boolean>(false);
 
   const createTable = (rows: number, columns: number) => {
     const studentNumber:number = rows * columns;

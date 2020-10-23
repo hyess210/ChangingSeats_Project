@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TEAM_BUILDING_IMG from 'assets/images/TeamBuilding/TEAM_BUILDING.png';
+import TeamBuildingCard from './TeamBuildingCard/TeamBuildingCard';
 
 import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
@@ -72,17 +73,31 @@ const TeamBuilding = () => {
             </span>
           </div>
           <img src={TEAM_BUILDING_IMG} alt="모둠 정하기" />
-          <Button 
-          children="뽑기 시작" 
-          customStyle={buttonCustomStyle}
-          handleFunction={() => handleCreateTeam()}
-           />
+          {
+            isBlock ?
+            <Button 
+            children="다시 시작" 
+            customStyle={buttonCustomStyle}
+            handleFunction={() => handleCreateTeam()}
+             /> :
+            <Button 
+            children="뽑기 시작" 
+            customStyle={buttonCustomStyle}
+            handleFunction={() => handleCreateTeam()}
+            />
+          }
         </div>
       </div>
 
       <div className={cx('TeamBuilding__right')}>
         {
-          // isBlock ? 
+          isBlock ? 
+          <TeamBuildingCard
+          studentNumber={studentNumber}
+          memberNumber={memberNumber}
+          teamNumber={teamNumber}
+          /> :
+          <></>
         }
       </div>
     </>
