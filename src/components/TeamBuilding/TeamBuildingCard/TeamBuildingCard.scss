@@ -1,0 +1,13 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+@mixin setSixe($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+.TeamBuildingCard {
+  &__wrap {
+    background-color: $main;
+  }
+}

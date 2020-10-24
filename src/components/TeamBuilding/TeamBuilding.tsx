@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import TEAM_BUILDING_IMG from 'assets/images/TeamBuilding/TEAM_BUILDING.png';
 import TeamBuildingCard from './TeamBuildingCard/TeamBuildingCard';
 
@@ -10,6 +10,15 @@ import NumberInput from 'components/Common/NumberInput/NumberInput';
 const style = require('./TeamBuilding.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
+interface ITeamBuildingProps {
+  studentNumber: number;
+  setStudentNumber: Dispatch<SetStateAction<number>>;
+  teamNumber: number;
+  setTeamNumber: Dispatch<SetStateAction<number>>;
+  memberNumber: number;
+  setMemberNumber: Dispatch<SetStateAction<number>>;
+}
+
 const buttonCustomStyle = {
   width: '6.5rem',
   height: '2.5rem',
@@ -17,14 +26,18 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const TeamBuilding = () => {
-  const [studentNumber, setStudentNumber] = useState<number>(2);
-  const [teamNumber, setTeamNumber] = useState<number>(2);
-  const [memberNumber, setMemberNumber] = useState<number>(1);
+const TeamBuilding = ({
+  studentNumber,
+  setStudentNumber,
+  teamNumber,
+  setTeamNumber,
+  memberNumber,
+  setMemberNumber
+}: ITeamBuildingProps) => {
   const [isBlock, setIsBlock] = useState<boolean>(false);
 
   const handleCreateTeam = () => {
-    setIsBlock(true);
+    setIsBlock(!isBlock);
   }
 
   return (

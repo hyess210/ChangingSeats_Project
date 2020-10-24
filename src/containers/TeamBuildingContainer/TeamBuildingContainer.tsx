@@ -8,23 +8,21 @@ const style = require('components/TeamBuilding/TeamBuildingCard/TeamBuildingCard
 const cx: ClassNamesFn = classNames.bind(style);
 
 const TeamBuildingContainer = () => {
-  // const [result, setResult] = useState<string>('');
-  // const [isSeatHidden, setIsSeatHidden] = useState<boolean>(false);
-  // const [seatValueArray, setSeatValueArray] = useState<number[]>([]);
+  const [studentNumber, setStudentNumber] = useState<number>(2);
+  const [teamNumber, setTeamNumber] = useState<number>(2);
+  const [memberNumber, setMemberNumber] = useState<number>(1);
+  const [studentNumberArray, setStudentNumberArray] = useState<number[]>([]);
 
-  // const createTeamSeat = (
-  //   studentNumber: number, 
-  //   teamNumber: number, 
-  //   memberNumber: number) => {
-  //     return (
-  //       <div>
-          
-  //       </div>
-  //     )
-  //   }
   return (
     <>
-      <TeamBuilding />
+      <TeamBuilding
+      studentNumber={studentNumber}
+      setStudentNumber={setStudentNumber}
+      teamNumber={teamNumber}
+      setTeamNumber={setTeamNumber}
+      memberNumber={memberNumber}
+      setMemberNumber={setMemberNumber}
+      />
     </>
   );
 };

@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 
+import classNames from 'classnames';
+import { ClassNamesFn } from 'classnames/types';
+
+const style = require('./TeamBuildingCard.scss');
+const cx: ClassNamesFn = classNames.bind(style);
+
 interface ITeamBuildingCardProps {
     studentNumber: number;
     memberNumber: number;
@@ -11,15 +17,16 @@ const TeamBuildingCard = ({
     memberNumber,
     teamNumber
 }: ITeamBuildingCardProps) => {
-    const [studentNumberArray, setStudentNumberArray] = useState<number[]>([]);
 
-    for(let i = 0; i <= studentNumber; i++) {
-        setStudentNumberArray([...studentNumberArray, i]);
+    const TeamCardMember = () => {
+        return (
+            <div className={cx('TeamBuildingCard__wrap')}></div>
+        )
     }
-
+    
     const TeamCard = () => {
         return (
-            <div>
+            <div className={cx('TeamBuildingCard__wrap')}>
             </div>
         )
     }
