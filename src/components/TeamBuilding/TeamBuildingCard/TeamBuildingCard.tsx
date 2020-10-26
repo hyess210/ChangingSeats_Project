@@ -17,23 +17,22 @@ const TeamBuildingCard = ({
     memberNumber,
     teamNumber
 }: ITeamBuildingCardProps) => {
-
-    const TeamCardMember = () => {
-        return (
-            <div className={cx('TeamBuildingCard__wrap-card')}>1</div>
-        )
-    }
     
     const TeamCard = () => {
         return (
             <div className={cx('TeamBuildingCard__wrap')}>
-                <TeamCardMember/>
+                1
             </div>
         )
     }
     return (
     <>
-    <div>
+    <div className={cx('TeamBuildingCard')}>
+        <div className={cx('TeamBuildingCard__des')}>
+        <h2 style={{ color: '#f28b30' }}>모둠 생성 완료!</h2>
+        <p>모둠을 생성하였습니다. <br/>
+        모둠을 클릭해서 팀원을 확인하세요.</p>
+        </div>
         <TeamCard />
     </div>
     </>
