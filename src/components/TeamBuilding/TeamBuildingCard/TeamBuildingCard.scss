@@ -13,7 +13,7 @@
   text-align: center;
   align-items: center;
   &__des {
-    margin: 10% auto 8% auto;
+    margin: 15% auto 8% auto;
     text-align: center;
     font-size: $font_title_1;
     font-family: $NANUM-SQUARE_EXTRABOLD !important;
@@ -25,10 +25,18 @@
   }
   &__wrap {
     @include setSize(200px, 100px);
+    display: inline-block;
     background-color: $main;
     color: $white;
     border-radius: 7px;
-    margin: auto;
+    margin: auto 30px 30px auto;
     font-size: $font_title_4;
+    padding: 20px;
+    & ul {
+      & li {
+        display: inline;
+        margin-right: 14px;
+      }
+    }
   }
 }

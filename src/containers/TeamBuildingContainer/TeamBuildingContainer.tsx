@@ -11,8 +11,6 @@ const TeamBuildingContainer = () => {
   const [studentNumber, setStudentNumber] = useState<number>(2);
   const [teamNumber, setTeamNumber] = useState<number>(2);
   const [memberNumber, setMemberNumber] = useState<number>(1);
-  const [studentNumberArray, setStudentNumberArray] = useState<number[]>([]);
-
   return (
     <>
       <TeamBuilding

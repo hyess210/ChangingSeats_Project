@@ -17,11 +17,15 @@ const TeamBuildingCard = ({
     memberNumber,
     teamNumber
 }: ITeamBuildingCardProps) => {
-    
     const TeamCard = () => {
         return (
             <div className={cx('TeamBuildingCard__wrap')}>
-                1
+                <ul>
+                    <li>1번</li>
+                    <li>1번</li>
+                    <li>2번</li>
+                    <li>3번</li>
+                </ul>
             </div>
         )
     }
@@ -33,6 +37,9 @@ const TeamBuildingCard = ({
         <p>모둠을 생성하였습니다. <br/>
         모둠을 클릭해서 팀원을 확인하세요.</p>
         </div>
+        <TeamCard />
+        <TeamCard />
+        <TeamCard />
         <TeamCard />
     </div>
     </>
