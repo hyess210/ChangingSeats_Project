@@ -20,13 +20,14 @@ const TeamBuildingCard = ({
 
     const TeamCardMember = () => {
         return (
-            <div className={cx('TeamBuildingCard__wrap')}></div>
+            <div className={cx('TeamBuildingCard__wrap-card')}>1</div>
         )
     }
     
     const TeamCard = () => {
         return (
             <div className={cx('TeamBuildingCard__wrap')}>
+                <TeamCardMember/>
             </div>
         )
     }

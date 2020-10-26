@@ -1,13 +1,23 @@
 @import 'styles/colorSchema.scss';
 @import 'styles/typography/typography_Scheme.scss';
 
-@mixin setSixe($width, $height) {
+@mixin setSize($width, $height) {
   width: $width;
+  min-width: $width;
+  max-width: $width;
   height: $height;
+  max-height: $height;
 }
 
 .TeamBuildingCard {
   &__wrap {
     background-color: $main;
+    @include setSize(200px, 100px);
+    text-align: center;
+    align-items: center;
+    &-card {
+      @include setSize(50%, auto);
+      margin: auto;
+    }
   }
 }
