@@ -5,30 +5,39 @@ const RandomSeatsContainer = () => {
     let tableTag: string = '<table>';
     const [result, setResult] = useState<string>('');
     const [isSeatHidden, setIsSeatHidden] = useState<boolean>(false);
-    const [seatValueArray, setSeatValueArray] = useState<number[]>([]);
+    const [seatValue, setSeatValue] = useState<number>(0);
+    // const [seatValueArray, setSeatValueArray] = useState<number[]>([]);
+    let array: number[] = [];
 
   const createTable = (rows: number, columns: number) => {
     const studentNumber:number = rows * columns;
-    const searchDuplicate = ( num: number) => {
-      console.log(num);
-      for(let k = 0; k <= seatValueArray.length; k++) {
-        if (num === seatValueArray[k]) {  
-          return '';
-        } else {
-          setSeatValueArray([...seatValueArray, num])
-          return num;
+    for (let i = 0; i < studentNumber; ++ i) {
+      array[i] = i+1;
+    };
+
+    const getRandomArray = ( array:number[] ) => {
+      let temp = array.length;
+      let current = array.length;
+      let top = array.length;
+
+      if(top) {
+        while(--top) {
+          current = Math.floor(Math.random() * (top + 1));
+          temp = array[current];
+          array[current] = array[top];
+          array[top] = temp;
         }
       }
+      return array;
     }
+    array = getRandomArray(array); 
+    console.log(array);
     
     for ( let j = 1; j <= rows; j++) {
       tableTag += '<tr>';
       for ( let i = 1; i <= columns; i++) {
         tableTag += ('<td>'+
-        '<div>'+
-        (isSeatHidden ?
-        searchDuplicate(Math.floor(Math.random()*studentNumber + 1)) : '')
-        +'</div>'+'</td>');
+        '<div>'+ array[i] +'</div>'+'</td>');
       }
       tableTag += '</tr>';
     }
