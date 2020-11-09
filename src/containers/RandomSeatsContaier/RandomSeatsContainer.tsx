@@ -30,14 +30,15 @@ const RandomSeatsContainer = () => {
       }
       return array;
     }
-    array = getRandomArray(array); 
+    array = getRandomArray(array);
     console.log(array);
+
     
     for ( let j = 1; j <= rows; j++) {
       tableTag += '<tr>';
       for ( let i = 1; i <= columns; i++) {
         tableTag += ('<td>'+
-        '<div>'+ array[i] +'</div>'+'</td>');
+        '<div>'+ i + ',' + j +'</div>'+'</td>');
       }
       tableTag += '</tr>';
     }

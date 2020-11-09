@@ -7,22 +7,41 @@ const CardSelectContainer = () => {
   const [endNumber, setEndNumber] = useState<number>(0);
   let selectedCardArray: number[] = [];
 
-  let cardValueArray: number[] = new Array(endNumber );
+  let cardValueArray: number[] = [];
   let count: number = 0;
 
   for (let i = startNumber; i <= endNumber; i++) {
     cardValueArray[i] = i;;
   }
 
+  const getRandomValue = () => {
+    let temp = cardValueArray.length;
+    let current = cardValueArray.length;
+    let top = cardValueArray.length;
+
+    if(top) {
+      while(--top) {
+        current = Math.floor(Math.random() * (top + 1));
+        temp = cardValueArray[current];
+        cardValueArray[current] = cardValueArray[top];
+        cardValueArray[top] = temp;
+      }
+    }
+    return cardValueArray;
+  }
+  cardValueArray = getRandomValue();
+
   const handleRandomCardValue = () => {
-    cardValueArray.length === count ?
+    cardValueArray.length <= count ?
     setCardValue(-1)
     :
     setCardValue(
-      Math.floor(Math.random() * cardValueArray.length + startNumber)
+      // Math.floor(Math.random() * cardValueArray.length + startNumber)
+      cardValueArray[count]
     );
     selectedCardArray = selectedCardArray.concat(cardValue);
     count++;
+    console.log(count);
   };
 
   return (
