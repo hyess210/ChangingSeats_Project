@@ -37,8 +37,9 @@ const RandomSeats = ({ createTable, tableTag, isSeatHidden, setIsSeatHidden }: I
 
   const handleCreateSeat = () => {
     setIsCreateSeats(!isCreateSeats);
-    if (columnNumber >= 1 && rowNumber >= 1) {
+    if (columnNumber <= 1 && rowNumber <= 1) {
       alert('가로줄과 세로줄은 1보다 커야 합니다.');
+      setIsCreateSeats(false);
     } else
     createTable(rowNumber,columnNumber);
   }
@@ -46,7 +47,7 @@ const RandomSeats = ({ createTable, tableTag, isSeatHidden, setIsSeatHidden }: I
   const handleAgainCreateSeat = () => {
     setRowNumber(1);
     setColumnNumber(1);
-    handleCreateSeat();
+    setIsCreateSeats(false);
   }
 
   return (
