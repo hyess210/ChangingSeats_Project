@@ -14,6 +14,7 @@ interface IRandomSeatsCardProps {
   tableTag: string;
   isSeatHidden: boolean;
   setIsSeatHidden: Dispatch<SetStateAction<boolean>>;
+  isRandom: boolean;
 }
 
 const buttonCustomStyle = {
@@ -29,7 +30,8 @@ const RandomSeatsCard = ({
   columns,
   tableTag,
   isSeatHidden,
-  setIsSeatHidden
+  setIsSeatHidden,
+  isRandom
 }: IRandomSeatsCardProps) => {
   const handleShowSeatClick = () => {
     setIsSeatHidden(true);
@@ -39,7 +41,8 @@ const RandomSeatsCard = ({
     <>
       <div className={cx('RandomSeatsCard')}>
         <div className={cx('RandomSeatsCard__base')}>교탁</div>
-        <div className={cx('RandomSeatsCard__seats')}
+        <div className={cx(isSeatHidden ? 'RandomSeatsCard__seats' 
+        : 'RandomSeatsCard__seats-hidden')}
           dangerouslySetInnerHTML={{__html: tableTag}}>
         </div>
         {
@@ -58,13 +61,13 @@ const RandomSeatsCard = ({
           />
         }
         {
-          isSeatHidden ?
+          isSeatHidden && isRandom ?
         <span style={{ float: 'right' }}>
           <Button
             children="다시 배치"
             customStyle={buttonCustomStyle}
             appearance="outline"
-            // handleFunction={() => }
+            handleFunction={() => createTable(rows,columns)}
           />
         </span> :
         <span style={{ float: 'right' }}>
@@ -72,7 +75,6 @@ const RandomSeatsCard = ({
             children="다시 배치"
             customStyle={buttonCustomStyle}
             appearance="disable"
-            // handleFunction={() => }
           />
         </span>
         }

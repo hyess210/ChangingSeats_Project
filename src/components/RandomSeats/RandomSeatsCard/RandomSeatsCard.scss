@@ -1,6 +1,29 @@
 @import 'styles/colorSchema.scss';
 @import 'styles/typography/typography_Scheme.scss';
 
+@mixin seatTable {
+  & table {
+    width: 100%;
+    height: auto;
+    & tr td {
+      text-align: center;
+      height: 120px;
+      & div {
+        margin: auto;
+        background-color: $main;
+        color: $white;
+        font-size: $font_title_4;
+        padding-top: 25px;
+        height: 90px;
+        min-width: 100px;
+        max-width: 200px;
+        width: 70%;
+        border-radius: 7px;
+      }
+    }
+  }
+}
+
 .RandomSeatsCard {
   &__base {
     width: 200px;
@@ -17,26 +40,13 @@
   &__seats {
     min-height: 500px;
     text-align: center;
-    & table {
-      width: 100%;
-      height: auto;
-      & tr td {
-        text-align: center;
-        height: 120px;
-        & div {
-          margin: auto;
-          background-color: $main;
-          color: $white;
-          font-size: $font_title_4;
-          padding-top: 25px;
-          height: 90px;
-          min-width: 100px;
-          max-width: 200px;
-          width: 70%;
-          border-radius: 7px;
-        }
+    &-hidden {
+      @include seatTable();
+      & table tr td div {
+        color: $main;
       }
     }
+    @include seatTable();
   }
   &__card {
     display: inline-block;
