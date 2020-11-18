@@ -52,6 +52,8 @@ const CardSelect = ({
 
   const handleCreateCardAgain = () => {
     setIsCreateCard(!isCreateCard);
+    setStartNumber(0);
+    setEndNumber(0);
     setCardValue(-1);
   };
 

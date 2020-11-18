@@ -6,7 +6,6 @@ const RandomSeatsContainer = () => {
     const [result, setResult] = useState<string>('');
     const [isSeatHidden, setIsSeatHidden] = useState<boolean>(false);
     const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
-    const [seatValue, setSeatValue] = useState<number>(0);
     // const [seatValueArray, setSeatValueArray] = useState<number[]>([]);
     let array: number[] = [];
     let count = -1;

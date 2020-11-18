@@ -6,34 +6,36 @@ const CardSelectContainer = () => {
   const [startNumber, setStartNumber] = useState<number>(0);
   const [endNumber, setEndNumber] = useState<number>(0);
   let selectedCardArray: number[] = [];
-
-  let cardValueArray: number[] = [];
   let count: number = 0;
 
+  let cardValueArray: number[] = [];
+  
   for (let i = startNumber; i <= endNumber; i++) {
-    cardValueArray[i] = i;;
+    cardValueArray[i] = i;
   }
 
-  const getRandomValue = () => {
-    let temp = cardValueArray.length;
-    let current = cardValueArray.length;
-    let top = cardValueArray.length;
+  console.log(count);
+  const getRandomValue = (array: number[]) => {
+    let temp = array.length;
+    let current = array.length;
+    let top = array.length;
 
     if(top) {
       while(--top) {
         current = Math.floor(Math.random() * (top + 1));
-        temp = cardValueArray[current];
-        cardValueArray[current] = cardValueArray[top];
-        cardValueArray[top] = temp;
+        temp = array[current];
+        array[current] = array[top];
+        array[top] = temp;
       }
     }
-    return cardValueArray;
+    return array;
   }
-  cardValueArray = getRandomValue();
+  cardValueArray = getRandomValue(cardValueArray);
+  console.log(cardValueArray);
 
   const handleRandomCardValue = () => {
     cardValueArray.length <= count ?
-    setCardValue(-1)
+    alert("끝")
     :
     setCardValue(
       // Math.floor(Math.random() * cardValueArray.length + startNumber)
