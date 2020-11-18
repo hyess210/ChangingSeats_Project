@@ -16,6 +16,8 @@ interface IRandomSeatsProps {
   tableTag: string;
   isSeatHidden: boolean;
   setIsSeatHidden: Dispatch<SetStateAction<boolean>>;
+  isRandom: boolean;
+  setIsRandom: Dispatch<SetStateAction<boolean>>;
 }
 
 const buttonCustomStyle = {
@@ -25,10 +27,16 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const RandomSeats = ({ createTable, tableTag, isSeatHidden, setIsSeatHidden }: IRandomSeatsProps) => {
+const RandomSeats = ({ 
+  createTable, 
+  tableTag, 
+  isSeatHidden, 
+  setIsSeatHidden,
+  isRandom,
+  setIsRandom
+ }: IRandomSeatsProps) => {
   const [rowNumber, setRowNumber] = useState<number>(1);
   const [columnNumber, setColumnNumber] = useState<number>(1);
-  const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
   const [isCreateSeats, setIsCreateSeats] = useState<boolean>(false);
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,6 +134,7 @@ const RandomSeats = ({ createTable, tableTag, isSeatHidden, setIsSeatHidden }: I
           <RandomSeatsCard
             isSeatHidden={isSeatHidden}
             setIsSeatHidden={setIsSeatHidden}
+            isRandom={isRandom}
             createTable={createTable}
             rows={rowNumber}
             columns={columnNumber}
