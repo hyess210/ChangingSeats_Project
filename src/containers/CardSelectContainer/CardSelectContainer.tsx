@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import CardSelect from 'components/CardSelect/CardSelect';
+import useStores from 'lib/useStores';
 
 const CardSelectContainer = () => {
+	const { store } = useStores();
   const [cardValue, setCardValue] = useState<number>(-1);
   const [startNumber, setStartNumber] = useState<number>(0);
   const [endNumber, setEndNumber] = useState<number>(0);
   let selectedCardArray: number[] = [];
-  let count: number = 0;
-
-  let cardValueArray: number[] = [];
-  
-  for (let i = startNumber; i <= endNumber; i++) {
-    cardValueArray[i] = i;
-  }
+  // let count: number = 0;
+  let {
+    count,
+    cardValueArray
+  } = store.CardSelectStore;
+  const {
+    getCardValueArray
+  } = store.CardSelectStore;
 
   console.log(count);
   const getRandomValue = (array: number[]) => {
+    getCardValueArray(endNumber,startNumber);
     let temp = array.length;
     let current = array.length;
     let top = array.length;
@@ -30,19 +34,17 @@ const CardSelectContainer = () => {
     }
     return array;
   }
-  cardValueArray = getRandomValue(cardValueArray);
   console.log(cardValueArray);
 
   const handleRandomCardValue = () => {
+    cardValueArray = getRandomValue(cardValueArray);
     cardValueArray.length <= count ?
     alert("끝")
     :
     setCardValue(
-      // Math.floor(Math.random() * cardValueArray.length + startNumber)
       cardValueArray[count]
     );
     selectedCardArray = selectedCardArray.concat(cardValue);
-    count++;
     console.log(count);
   };
 
