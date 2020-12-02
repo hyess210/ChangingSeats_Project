@@ -6,7 +6,8 @@ class CardSelectStore {
     @observable count:number= 0;
     @observable endNumber:number=0;
     @observable startNumber:number=0;
-    @observable cardValueArray:number[] =[];
+    @observable cardValueArray:number[] = [];
+    @observable array:number[] = [];
     
     @action getCardValueArray(endNumber:number, startNumber:number) {    
         this.endNumber = endNumber;
@@ -16,21 +17,23 @@ class CardSelectStore {
         }
     }
 
-    @action getRandomValue(array:number[]) {
-        this.getCardValueArray(this.endNumber, this.startNumber);
-        let temp = array.length;
-        let current = array.length;
-        let top = array.length;
+    @action getRandomValue(endNumber:number, startNumber:number) {
+        this.getCardValueArray(endNumber, startNumber);
+        let temp = this.array.length;
+        let current = this.array.length;
+        let top = this.array.length;
+        console.log(this.cardValueArray);
     
         if(top) {
           while(--top) {
             current = Math.floor(Math.random() * (top + 1));
-            temp = array[current];
-            array[current] = array[top];
-            array[top] = temp;
+            temp = this.array[current];
+            this.array[current] = this.array[top];
+            this.array[top] = temp;
           }
         }
-        return array;
+        // return array;
+        this.cardValueArray = this.array;
     }
 }
 
