@@ -115,15 +115,13 @@ const CardSelect = ({
 
       <div className={cx('CardSelect__right')}>
         {isCreateCard ? (
-          <div onClick={() => handleRandomCardValue()}>
           <CardSelectItem
             startNumber={startNumber}
             endNumber={endNumber}
             cardValue={cardValue}
-            // onClick={handleRandomCardValue}
+            onClick={handleRandomCardValue}
             // selectedCardArray={selectedCardArray}
           />
-          </div>
         ) : (
           <></>
         )}

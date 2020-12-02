@@ -17,6 +17,7 @@ const CardSelectContainer = () => {
     cardValueArray
   } = store.CardSelectStore;
 
+  console.log("cardValueArray:"+cardValueArray);
   // const getRandomValue = (array: number[]) => {
   //   getCardValueArray(endNumber,startNumber);
   //   let temp = array.length;
@@ -35,15 +36,15 @@ const CardSelectContainer = () => {
   // }
 
   const handleRandomCardValue = () => {
-    if (cardValueArray.length === count) {
-      alert("끝");
-    } else {
+    // if (cardValueArray.length === count) {
+    //   alert("끝");
+    // } else {
       setCardValue(
         cardValueArray[count]
       );
       selectedCardArray = selectedCardArray.concat(cardValue);
       count++;
-    }
+    // }
     console.log("cardValueArray.length:"+cardValueArray.length);
     console.log("count:"+count);
   };

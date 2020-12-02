@@ -19,10 +19,10 @@ class CardSelectStore {
 
     @action getRandomValue(endNumber:number, startNumber:number) {
         this.getCardValueArray(endNumber, startNumber);
+        this.array = this.cardValueArray;
         let temp = this.array.length;
         let current = this.array.length;
         let top = this.array.length;
-        console.log(this.cardValueArray);
     
         if(top) {
           while(--top) {
@@ -34,6 +34,7 @@ class CardSelectStore {
         }
         // return array;
         this.cardValueArray = this.array;
+        console.log("getrandomValue:"+this.cardValueArray.length);
     }
 }
 
