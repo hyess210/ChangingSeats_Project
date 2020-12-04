@@ -18,7 +18,6 @@ const CardSelectContainer = () => {
   } = store.CardSelectStore;
 
   const handleRandomCardValue = (count:number) => {
-      // count++;
     // if (cardValueArray.length === count) {
     //   alert("끝");
     // } else {

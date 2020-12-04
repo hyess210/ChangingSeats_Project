@@ -31,7 +31,6 @@ const CardSelectItem = ({
 
   const handleCardClick = () => {
     onClick(count);
-    count++;
   }
     console.log("count:"+count);
 
