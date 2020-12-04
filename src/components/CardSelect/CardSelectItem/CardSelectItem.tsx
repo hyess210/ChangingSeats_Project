@@ -2,7 +2,6 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
-import Button from 'components/Common/Button/Button';
 
 const style = require('./CardSelectItem.scss');
 const cx: ClassNamesFn = classNames.bind(style);
@@ -11,15 +10,8 @@ interface ICardSelectItemProps {
   startNumber: number;
   endNumber: number;
   cardValue: number;
-  onClick: (arg0: number) => void;
+  onClick: () => void;
 }
-
-const buttonCustomStyle = {
-  width: '8.5rem',
-  height: '2.5rem',
-  margin: '18px 0px 0px 0px',
-  fontSize: '18px',
-};
 
 const CardSelectItem = ({
   startNumber,
@@ -27,12 +19,15 @@ const CardSelectItem = ({
   cardValue,
   onClick,
 }: ICardSelectItemProps) => {
-  let count:number = 0;
-
-  const handleCardClick = () => {
-    onClick(count);
-  }
-    console.log("count:"+count);
+  const filterCardValue = (value: number) => {
+    if (value === -1) {
+      return '?';
+    } else if (value === -2) {
+      return '뽑기를 모두 뽑았습니다.';
+    } else {
+      return value;
+    }
+  };
 
   const AllCardBox = () => {
     return (
@@ -42,20 +37,19 @@ const CardSelectItem = ({
     );
   };
 
-  console.log("cardValue:"+cardValue);
   const CardBox = () => {
     return (
       <div
         className={cx('CardSelectItem__card-active')}
-        onClick={() => handleCardClick()}
+        onClick={() => onClick()}
       >
-        {/* {cardValue === -1 ? (
-          <div className={cx('CardSelectItem__card-line')}>?</div>
-        ) : (
-          <div className={cx('CardSelectItem__card-line')}>{cardValue}</div>
-        )} */}
-        <div className={cx('CardSelectItem__card-line')}>
-          {cardValue === -1 ? <>?</> : <>{cardValue}</>}
+        <div
+          className={cx(
+            'CardSelectItem__card-line',
+            cardValue === -2 && 'CardSelectItem__card-line-disable'
+          )}
+        >
+          {<>{filterCardValue(cardValue)}</>}
         </div>
       </div>
     );
@@ -73,7 +67,7 @@ const CardSelectItem = ({
           </p>
         </div>
 
-          <div>
+        <div>
           <CardBox />
         </div>
         {/* <Button children="한번에 공개하기" customStyle={buttonCustomStyle} /> */}

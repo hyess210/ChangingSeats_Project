@@ -11,28 +11,28 @@ const style = require('./TeamBuilding.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
 interface ITeamBuildingProps {
+  count:number;
   studentNumber: number;
   setStudentNumber: Dispatch<SetStateAction<number>>;
   teamNumber: number;
   setTeamNumber: Dispatch<SetStateAction<number>>;
-  memberNumber: number;
-  setMemberNumber: Dispatch<SetStateAction<number>>;
+  studentArray: number[];
 }
 
 const buttonCustomStyle = {
   width: '6.5rem',
   height: '2.5rem',
-  margin: '15px 0px 0px 140px',
+  margin: '15px 0px 0px 0px',
   fontSize: '18px',
 };
 
 const TeamBuilding = ({
+  count,
   studentNumber,
   setStudentNumber,
   teamNumber,
   setTeamNumber,
-  memberNumber,
-  setMemberNumber
+  studentArray
 }: ITeamBuildingProps) => {
   const [isBlock, setIsBlock] = useState<boolean>(false);
 
@@ -74,16 +74,6 @@ const TeamBuilding = ({
                 isBlock={isBlock}
               />
             </span>
-            <span style={{ marginLeft: '20px' }}>
-              모둠 당 학생 수
-              <NumberInput
-                minNumber={1}
-                maxNumber={30}
-                value={memberNumber}
-                setValue={setMemberNumber}
-                isBlock={isBlock}
-              />
-            </span>
           </div>
           <img src={TEAM_BUILDING_IMG} alt="모둠 정하기" />
           {
@@ -106,9 +96,10 @@ const TeamBuilding = ({
         {
           isBlock ? 
           <TeamBuildingCard
+          count={count}
           studentNumber={studentNumber}
-          memberNumber={memberNumber}
           teamNumber={teamNumber}
+          studentArray={studentArray}
           /> :
           <></>
         }

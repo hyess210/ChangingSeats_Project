@@ -8,22 +8,22 @@ const CardSelectContainer = () => {
   const [startNumber, setStartNumber] = useState<number>(0);
   const [endNumber, setEndNumber] = useState<number>(0);
   let selectedCardArray: number[] = [];
-  // let count: number = 0;
-  // let {
-  //   count
-  // } = store.CardSelectStore;
   const {
+    count,
     getRandomValue,
-    cardValueArray
+    cardValueArray,
+    IncreaseCount
   } = store.CardSelectStore;
 
-  const handleRandomCardValue = (count:number) => {
-    // if (cardValueArray.length === count) {
-    //   alert("끝");
-    // } else {
+  const handleRandomCardValue = () => {
+    IncreaseCount();
+    if (cardValueArray.length <= count) {
+      setCardValue(-2);
+    } else {
       setCardValue(
         cardValueArray[count]
       );
+    }
       selectedCardArray = selectedCardArray.concat(cardValue);
     // }
   };
