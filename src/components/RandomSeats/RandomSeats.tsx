@@ -56,6 +56,7 @@ const RandomSeats = ({
     setRowNumber(1);
     setColumnNumber(1);
     setIsCreateSeats(false);
+    setIsSeatHidden(false);
   }
 
   return (

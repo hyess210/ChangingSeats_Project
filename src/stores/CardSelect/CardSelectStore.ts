@@ -34,7 +34,7 @@ class CardSelectStore {
         }
         // return array;
         this.cardValueArray = this.array;
-        console.log("getrandomValue:"+this.cardValueArray.length);
+        console.log(this.cardValueArray);
     }
 }
 

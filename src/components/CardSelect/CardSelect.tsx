@@ -19,7 +19,7 @@ interface ICardSelectProps {
   setCardValue: Dispatch<SetStateAction<number>>;
   getRandomValue: (arg0: number, arg1:number) => void;
   // selectedCardArray: number[];
-  handleRandomCardValue: () => void;
+  handleRandomCardValue: (arg0: number) => void;
 }
 
 const buttonCustomStyle = {

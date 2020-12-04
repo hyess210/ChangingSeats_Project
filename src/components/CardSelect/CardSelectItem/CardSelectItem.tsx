@@ -11,7 +11,7 @@ interface ICardSelectItemProps {
   startNumber: number;
   endNumber: number;
   cardValue: number;
-  onClick: () => void;
+  onClick: (arg0: number) => void;
 }
 
 const buttonCustomStyle = {
@@ -27,6 +27,14 @@ const CardSelectItem = ({
   cardValue,
   onClick,
 }: ICardSelectItemProps) => {
+  let count:number = 0;
+
+  const handleCardClick = () => {
+    onClick(count);
+    count++;
+  }
+    console.log("count:"+count);
+
   const AllCardBox = () => {
     return (
       <div className={cx('CardSelectItem__allCard')}>
@@ -40,7 +48,7 @@ const CardSelectItem = ({
     return (
       <div
         className={cx('CardSelectItem__card-active')}
-        onClick={() => onClick()}
+        onClick={() => handleCardClick()}
       >
         {/* {cardValue === -1 ? (
           <div className={cx('CardSelectItem__card-line')}>?</div>

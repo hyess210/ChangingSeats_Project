@@ -31,10 +31,10 @@
       box-shadow: 0px 10px 30px rgba($color: $gray3, $alpha: 0.6);
       background-color: rgba($color: $main_active, $alpha: 1);
     }
-    &:active {
-      // backface-visibility: hidden;
-      transform: rotateY(180deg);
-    }
+    // &:active {
+    //   // backface-visibility: hidden;
+    //   transform: rotateY(180deg);
+    // }
     &-initial {
       @extend .CardSelectItem__card;
       background-color: $gray2;

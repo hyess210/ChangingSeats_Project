@@ -24,7 +24,7 @@ const Main = () => {
         <div className={cx('Main__contentBox')}>
           <div className={cx('Main__contentBox-left')}>
             <h1>
-              선생님 우리반
+              선생님, 우리반
               <br />
               자리 언제 바꿔요?
             </h1>

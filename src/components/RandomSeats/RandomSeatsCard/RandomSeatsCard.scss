@@ -42,6 +42,7 @@
     text-align: center;
     &-hidden {
       @include seatTable();
+      min-height: 500px;
       & table tr td div {
         color: $main;
       }
