@@ -8,8 +8,10 @@ const style = require('./CardSelectItem.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
 interface ICardSelectItemProps {
-  value: number;
+  startNumber: number;
   endNumber: number;
+  cardValue: number;
+  onClick: (arg0: number) => void;
 }
 
 const buttonCustomStyle = {
@@ -19,21 +21,42 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const CardSelectItem = ({ value, endNumber }: ICardSelectItemProps) => {
+const CardSelectItem = ({
+  startNumber,
+  endNumber,
+  cardValue,
+  onClick,
+}: ICardSelectItemProps) => {
+  let count:number = 0;
+
+  const handleCardClick = () => {
+    onClick(count);
+  }
+    console.log("count:"+count);
+
+  const AllCardBox = () => {
+    return (
+      <div className={cx('CardSelectItem__allCard')}>
+        <div className={cx('CardSelectItem__allCard-card')}></div>
+      </div>
+    );
+  };
+
+  console.log("cardValue:"+cardValue);
   const CardBox = () => {
-    let count: number = 0;
     return (
       <div
-        className={cx('CardSelectItem__card-active', {
-          'CardSelectItem__card-initial': value === -1,
-        })}
-        onClick={() => count++}
+        className={cx('CardSelectItem__card-active')}
+        onClick={() => handleCardClick()}
       >
-        {value === -1 ? (
+        {/* {cardValue === -1 ? (
           <div className={cx('CardSelectItem__card-line')}>?</div>
         ) : (
-          <div className={cx('CardSelectItem__card-line')}>{value}</div>
-        )}
+          <div className={cx('CardSelectItem__card-line')}>{cardValue}</div>
+        )} */}
+        <div className={cx('CardSelectItem__card-line')}>
+          {cardValue === -1 ? <>?</> : <>{cardValue}</>}
+        </div>
       </div>
     );
   };
@@ -49,8 +72,11 @@ const CardSelectItem = ({ value, endNumber }: ICardSelectItemProps) => {
             카드를 클릭하여 한장씩 뽑아보세요.
           </p>
         </div>
-        <CardBox />
-        <Button children="한번에 공개하기" customStyle={buttonCustomStyle} />
+
+          <div>
+          <CardBox />
+        </div>
+        {/* <Button children="한번에 공개하기" customStyle={buttonCustomStyle} /> */}
       </div>
     </>
   );

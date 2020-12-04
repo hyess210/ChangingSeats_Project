@@ -1,35 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RandomSeats from 'components/RandomSeats/RandomSeats';
-import classNames from 'classnames';
-import { ClassNamesFn } from 'classnames/types';
-
-const style = require('components/RandomSeats/RandomSeatsCard/RandomSeatsCard.scss');
-const cx: ClassNamesFn = classNames.bind(style);
 
 const RandomSeatsContainer = () => {
-  let rowTable: string = '';
-  let columnTable: string = '';
+    let tableTag: string = '<table>';
+    const [result, setResult] = useState<string>('');
+    const [isSeatHidden, setIsSeatHidden] = useState<boolean>(false);
+    const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
+    // const [seatValueArray, setSeatValueArray] = useState<number[]>([]);
+    let array: number[] = [];
+    let count = -1;
+
+    const getRandomValue = ( ) => {
+      count++;
+      return array[count];
+    }
 
   const createTable = (rows: number, columns: number) => {
-    console.log(rows, columns);
-    const createRows = () => {
-      for (let j = 1; j <= rows; j++) {
-        rowTable += <td className={cx('RandomSeatsCard__card-box')}>{j}</td>;
-      }
+    const studentNumber:number = rows * columns;
+    for (let i = 0; i < studentNumber; ++ i) {
+      array[i] = i+1;
     };
-    const createColumns = () => {
-      createRows();
-      for (let i = 1; i <= columns; i++) {
-        columnTable += <tr>{rowTable}</tr>;
+
+    const getRandomArray = ( array:number[] ) => {
+      let temp = array.length;
+      let current = array.length;
+      let top = array.length;
+
+      if(top) {
+        while(--top) {
+          current = Math.floor(Math.random() * (top + 1));
+          temp = array[current];
+          array[current] = array[top];
+          array[top] = temp;
+        }
       }
-    };
-    createColumns();
-    console.log(rowTable, columnTable);
-    return <table className={cx('RandomSeatsCard__card')}>{columnTable}</table>;
+      return array;
+    }
+
+    const getSortArray = (array:number[]) => {
+      for(let i = 0; i <= rows*columns; i++) {
+        array[i] = i+1;
+      }
+      return array;
+    }
+
+    if (isRandom) {
+    array = getRandomArray(array);
+    } else {
+      array = getSortArray(array);
+    }
+
+    
+    for ( let j = 1; j <= rows; j++) {
+      tableTag += '<tr>';
+      for ( let i = 1; i <= columns; i++) {
+        tableTag += ('<td>'+
+        '<div>'+ getRandomValue() +'</div>'+'</td>');
+      }
+      tableTag += '</tr>';
+    }
+  setResult(tableTag+'</table>');
   };
   return (
     <>
-      <RandomSeats createTable={createTable} />
+      <RandomSeats 
+      createTable={createTable} 
+      tableTag={result} 
+      isSeatHidden={isSeatHidden}
+      setIsSeatHidden={setIsSeatHidden}
+      isRandom={isRandom}
+      setIsRandom={setIsRandom}
+      />
     </>
   );
 };

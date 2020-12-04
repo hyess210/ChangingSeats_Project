@@ -1,0 +1,42 @@
+@import 'styles/colorSchema.scss';
+@import 'styles/typography/typography_Scheme.scss';
+
+@mixin setSize($width, $height) {
+  width: $width;
+  min-width: $width;
+  max-width: $width;
+  height: $height;
+  max-height: $height;
+}
+
+.TeamBuildingCard {
+  text-align: center;
+  align-items: center;
+  &__des {
+    margin: 15% auto 8% auto;
+    text-align: center;
+    font-size: $font_title_1;
+    font-family: $NANUM-SQUARE_EXTRABOLD !important;
+    & p {
+      margin-top: 20px;
+      color: $gray3;
+      font-size: $font_content_3;
+    }
+  }
+  &__wrap {
+    @include setSize(200px, 100px);
+    display: inline-block;
+    background-color: $main;
+    color: $white;
+    border-radius: 7px;
+    margin: auto 30px 30px auto;
+    font-size: $font_title_4;
+    padding: 20px;
+    & ul {
+      & li {
+        display: inline;
+        margin-right: 14px;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent,Dispatch, SetStateAction } from 'react';
 import RANDOMSEATS_IMG from 'assets/images/RandomSeats/RANDOM_SEAT.png';
 
 import classNames from 'classnames';
@@ -13,6 +13,11 @@ const cx: ClassNamesFn = classNames.bind(style);
 
 interface IRandomSeatsProps {
   createTable: (arg0: number, arg1: number) => void;
+  tableTag: string;
+  isSeatHidden: boolean;
+  setIsSeatHidden: Dispatch<SetStateAction<boolean>>;
+  isRandom: boolean;
+  setIsRandom: Dispatch<SetStateAction<boolean>>;
 }
 
 const buttonCustomStyle = {
@@ -22,15 +27,37 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
+const RandomSeats = ({ 
+  createTable, 
+  tableTag, 
+  isSeatHidden, 
+  setIsSeatHidden,
+  isRandom,
+  setIsRandom
+ }: IRandomSeatsProps) => {
   const [rowNumber, setRowNumber] = useState<number>(1);
   const [columnNumber, setColumnNumber] = useState<number>(1);
-  const [isRandom, setIsRandom] = useState<boolean>(true); // 0:random 1:number
   const [isCreateSeats, setIsCreateSeats] = useState<boolean>(false);
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsRandom(!isRandom);
   };
+
+  const handleCreateSeat = () => {
+    setIsCreateSeats(!isCreateSeats);
+    if (columnNumber <= 1 && rowNumber <= 1) {
+      alert('가로줄과 세로줄은 1보다 커야 합니다.');
+      setIsCreateSeats(false);
+    } else
+    createTable(rowNumber,columnNumber);
+  }
+  
+  const handleAgainCreateSeat = () => {
+    setRowNumber(1);
+    setColumnNumber(1);
+    setIsCreateSeats(false);
+    setIsSeatHidden(false);
+  }
 
   return (
     <>
@@ -50,13 +77,9 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             <NumberInput
               minNumber={1}
               maxNumber={24}
-              // onChange={
-              //   (e: ChangeEvent<HTMLInputElement>) =>
-              //     setRowNumber(Number(e.target.value))
-              //   // console.log(e.target.value)
-              // }
               value={rowNumber}
               setValue={setRowNumber}
+              isBlock={isCreateSeats}
             />
             <span style={{ margin: '20px' }}>
               가로줄의 수
@@ -68,6 +91,7 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
                 // }
                 value={columnNumber}
                 setValue={setColumnNumber}
+                isBlock={isCreateSeats}
               />
             </span>
           </div>
@@ -94,13 +118,13 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
             <Button
               children="다시 시작"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateSeats(!isCreateSeats)}
+              handleFunction={() => handleAgainCreateSeat()}
             />
           ) : (
             <Button
               children="자리 생성"
               customStyle={buttonCustomStyle}
-              handleFunction={() => setIsCreateSeats(!isCreateSeats)}
+              handleFunction={() => handleCreateSeat()}
             />
           )}
         </div>
@@ -109,9 +133,13 @@ const RandomSeats = ({ createTable }: IRandomSeatsProps) => {
       <div className={cx('RandomSeats__right')}>
         {isCreateSeats ? (
           <RandomSeatsCard
+            isSeatHidden={isSeatHidden}
+            setIsSeatHidden={setIsSeatHidden}
+            isRandom={isRandom}
             createTable={createTable}
             rows={rowNumber}
             columns={columnNumber}
+            tableTag={tableTag}
           />
         ) : (
           <></>

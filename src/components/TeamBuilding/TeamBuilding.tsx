@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import TEAM_BUILDING_IMG from 'assets/images/TeamBuilding/TEAM_BUILDING.png';
+import TeamBuildingCard from './TeamBuildingCard/TeamBuildingCard';
 
 import classNames from 'classnames';
 import { ClassNamesFn } from 'classnames/types';
@@ -9,6 +10,15 @@ import NumberInput from 'components/Common/NumberInput/NumberInput';
 const style = require('./TeamBuilding.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
+interface ITeamBuildingProps {
+  studentNumber: number;
+  setStudentNumber: Dispatch<SetStateAction<number>>;
+  teamNumber: number;
+  setTeamNumber: Dispatch<SetStateAction<number>>;
+  memberNumber: number;
+  setMemberNumber: Dispatch<SetStateAction<number>>;
+}
+
 const buttonCustomStyle = {
   width: '6.5rem',
   height: '2.5rem',
@@ -16,10 +26,19 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const TeamBuilding = () => {
-  const [studentNumber, setStudentNumber] = useState<number>(2);
-  const [teamNumber, setTeamNumber] = useState<number>(2);
-  const [memberNumber, setMemberNumber] = useState<number>(1);
+const TeamBuilding = ({
+  studentNumber,
+  setStudentNumber,
+  teamNumber,
+  setTeamNumber,
+  memberNumber,
+  setMemberNumber
+}: ITeamBuildingProps) => {
+  const [isBlock, setIsBlock] = useState<boolean>(false);
+
+  const handleCreateTeam = () => {
+    setIsBlock(!isBlock);
+  }
 
   return (
     <>
@@ -43,6 +62,7 @@ const TeamBuilding = () => {
               maxNumber={80}
               value={studentNumber}
               setValue={setStudentNumber}
+              isBlock={isBlock}
             />
             <span style={{ marginLeft: '20px' }}>
               모둠 수
@@ -51,6 +71,7 @@ const TeamBuilding = () => {
                 maxNumber={20}
                 value={teamNumber}
                 setValue={setTeamNumber}
+                isBlock={isBlock}
               />
             </span>
             <span style={{ marginLeft: '20px' }}>
@@ -60,15 +81,38 @@ const TeamBuilding = () => {
                 maxNumber={30}
                 value={memberNumber}
                 setValue={setMemberNumber}
+                isBlock={isBlock}
               />
             </span>
           </div>
           <img src={TEAM_BUILDING_IMG} alt="모둠 정하기" />
-          <Button children="뽑기 시작" customStyle={buttonCustomStyle} />
+          {
+            isBlock ?
+            <Button 
+            children="다시 시작" 
+            customStyle={buttonCustomStyle}
+            handleFunction={() => handleCreateTeam()}
+             /> :
+            <Button 
+            children="뽑기 시작" 
+            customStyle={buttonCustomStyle}
+            handleFunction={() => handleCreateTeam()}
+            />
+          }
         </div>
       </div>
 
-      <div className={cx('TeamBuilding__right')}></div>
+      <div className={cx('TeamBuilding__right')}>
+        {
+          isBlock ? 
+          <TeamBuildingCard
+          studentNumber={studentNumber}
+          memberNumber={memberNumber}
+          teamNumber={teamNumber}
+          /> :
+          <></>
+        }
+      </div>
     </>
   );
 };
