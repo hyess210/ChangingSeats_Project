@@ -7,6 +7,8 @@ import Button from 'components/Common/Button/Button';
 import NumberInput from 'components/Common/NumberInput/NumberInput';
 import CardSelectItem from './CardSelectItem/CardSelectItem';
 
+import useStores from 'lib/useStores';
+
 const style = require('./CardSelect.scss');
 const cx: ClassNamesFn = classNames.bind(style);
 
@@ -17,9 +19,9 @@ interface ICardSelectProps {
   setEndNumber: Dispatch<SetStateAction<number>>;
   cardValue: number;
   setCardValue: Dispatch<SetStateAction<number>>;
-  getRandomValue: (arg0: number, arg1:number) => void;
+  getRandomValue: (arg0: number, arg1: number) => void;
   // selectedCardArray: number[];
-  handleRandomCardValue: (arg0: number) => void;
+  handleRandomCardValue: () => void;
 }
 
 const buttonCustomStyle = {
@@ -40,6 +42,8 @@ const CardSelect = ({
   getRandomValue,
   handleRandomCardValue,
 }: ICardSelectProps) => {
+  const { store } = useStores();
+  const { IncreaseCount } = store.CardSelectStore;
   const [isCreateCard, setIsCreateCard] = useState<boolean>(false);
 
   const handleCreateCard = (startNumber: number, endNumber: number) => {
@@ -48,13 +52,14 @@ const CardSelect = ({
     } else if (endNumber > 99 || startNumber < 0) {
       alert('입력 가능한 숫자 범위를 벗어났습니다.');
     } else {
-      getRandomValue(endNumber,startNumber);
+      getRandomValue(endNumber, startNumber);
       setIsCreateCard(!isCreateCard);
     }
   };
 
   const handleCreateCardAgain = () => {
-    getRandomValue(endNumber,startNumber);
+    IncreaseCount(true);
+    getRandomValue(endNumber, startNumber);
     setIsCreateCard(!isCreateCard);
     setStartNumber(0);
     setEndNumber(0);

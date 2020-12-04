@@ -3,12 +3,17 @@ import { autobind } from 'core-decorators';
 
 @autobind
 class CardSelectStore {
-    @observable count:number= 0;
-    @observable endNumber:number=0;
-    @observable startNumber:number=0;
+    @observable count:number = 0;
+    @observable endNumber:number = 0;
+    @observable startNumber:number = 0;
     @observable cardValueArray:number[] = [];
     @observable array:number[] = [];
     
+    @action IncreaseCount(isEndLength: boolean) {
+      isEndLength ? this.count = 0 :
+      this.count++;
+    }
+
     @action getCardValueArray(endNumber:number, startNumber:number) {    
         this.endNumber = endNumber;
         this.startNumber = startNumber; 
