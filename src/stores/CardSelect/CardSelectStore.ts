@@ -9,8 +9,8 @@ class CardSelectStore {
     @observable cardValueArray:number[] = [];
     @observable array:number[] = [];
     
-    @action IncreaseCount(isEndLength: boolean) {
-      isEndLength ? this.count = 0 :
+    @action IncreaseCount(isLengthEnd: boolean) {
+      isLengthEnd ? this.count = 0 :
       this.count++;
     }
 
