@@ -23,7 +23,7 @@ const TeamBuildingCard = ({
 
   const TeamCard = () => {
     setStudentValue(studentArray[count]);
-    
+
     const TeamCardValue = () => {
       return <li>{studentValue}</li>;
     };
