@@ -93,7 +93,10 @@ const TeamBuilding = ({
       </div>
 
       <div className={cx('TeamBuilding__right')}>
-        {
+        <div>
+          구현 중인 기능입니다.
+        </div>
+        {/* {
           isBlock ? 
           <TeamBuildingCard
           count={count}
@@ -102,7 +105,7 @@ const TeamBuilding = ({
           studentArray={studentArray}
           /> :
           <></>
-        }
+        } */}
       </div>
     </>
   );
