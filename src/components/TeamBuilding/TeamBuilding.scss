@@ -1,5 +1,5 @@
-@import 'styles/colorSchema.scss';
-@import 'styles/typography/typography_Scheme.scss';
+@import "styles/colorSchema.scss";
+@import "styles/typography/typography_Scheme.scss";
 
 .TeamBuilding {
   font-size: $font_content_3;
@@ -7,6 +7,7 @@
     float: left;
     margin-left: 15%;
     margin-top: 7%;
+    width: 30vw;
     &-top {
       &-des {
         text-align: center;
@@ -28,7 +29,7 @@
   &__right {
     float: right;
     margin-right: 8%;
-    width: 650px;
+    width: 30vw;
 
     & div {
       font-size: $font_title_2;

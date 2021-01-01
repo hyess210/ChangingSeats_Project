@@ -4,10 +4,10 @@
 .Main {
   &__contentBox {
     &-left {
-      // background-color: lightcyan;
       float: left;
       margin-top: 15%;
       margin-left: 10%;
+      width: 50vw;
       & ul {
         list-style: none;
         & li {
@@ -31,9 +31,10 @@
       float: right;
       margin-right: 5%;
       margin-top: 10%;
+      width: 30vw;
       // background-color: lightcoral;
       & img {
-        height: 700px;
+        height: 70vh;
       }
     }
   }
