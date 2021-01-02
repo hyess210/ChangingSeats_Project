@@ -10,7 +10,7 @@ const cx: ClassNamesFn = classNames.bind(style);
 
 const TeamBuildingContainer = () => {
   const { store } = useStores();
-  let tableTag: string = "<table>";
+  let tableTag: string = "<ul>";
   const [result, setResult] = useState<string>("");
   const [studentNumber, setStudentNumber] = useState<number>(2);
   const [teamNumber, setTeamNumber] = useState<number>(2);
@@ -41,13 +41,13 @@ const TeamBuildingContainer = () => {
     };
 
     for (let j = 1; j <= teamNumber; j++) {
-      tableTag += "<tr>";
+      tableTag += "<li>";
       for (let i = 1; i <= studentNumber; i++) {
-        tableTag += "<td>" + "<div>" + getRandomValue() + "</div>" + "</td>";
+        tableTag += "<div>" + getRandomValue() + "</div>";
       }
-      tableTag += "</tr>";
+      tableTag += "</li>";
     }
-    setResult(tableTag + "</table>");
+    setResult(tableTag + "</ul>");
   };
 
   return (

@@ -23,7 +23,7 @@
       font-size: $font_content_3;
     }
   }
-  &__wrap tr{
+  &__wrap ul{
     @include setSize(200px, 100px);
     display: inline-block;
     background-color: $main;
