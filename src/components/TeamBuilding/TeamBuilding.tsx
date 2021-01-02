@@ -17,6 +17,8 @@ interface ITeamBuildingProps {
   teamNumber: number;
   setTeamNumber: Dispatch<SetStateAction<number>>;
   studentArray: number[];
+  createTeam: (arg0:number) => void;
+  result: string;
 }
 
 const buttonCustomStyle = {
@@ -32,12 +34,15 @@ const TeamBuilding = ({
   setStudentNumber,
   teamNumber,
   setTeamNumber,
-  studentArray
+  studentArray,
+  createTeam,
+  result
 }: ITeamBuildingProps) => {
   const [isBlock, setIsBlock] = useState<boolean>(false);
 
   const handleCreateTeam = () => {
     setIsBlock(!isBlock);
+    createTeam(studentNumber);
   }
 
   return (
@@ -93,19 +98,17 @@ const TeamBuilding = ({
       </div>
 
       <div className={cx('TeamBuilding__right')}>
-        <div>
-          구현 중인 기능입니다.
-        </div>
-        {/* {
+        {
           isBlock ? 
           <TeamBuildingCard
           count={count}
           studentNumber={studentNumber}
           teamNumber={teamNumber}
           studentArray={studentArray}
+          result={result}
           /> :
           <></>
-        } */}
+        }
       </div>
     </>
   );

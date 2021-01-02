@@ -11,6 +11,7 @@ interface ITeamBuildingCardProps {
   studentNumber: number;
   teamNumber: number;
   studentArray: number[];
+  result: string;
 }
 
 const TeamBuildingCard = ({
@@ -18,21 +19,12 @@ const TeamBuildingCard = ({
   studentNumber,
   teamNumber,
   studentArray,
+  result
 }: ITeamBuildingCardProps) => {
-  const [studentValue, setStudentValue] = useState<number>(0);
-
   const TeamCard = () => {
-    setStudentValue(studentArray[count]);
-
-    const TeamCardValue = () => {
-      return <li>{studentValue}</li>;
-    };
-    
     return (
-      <div className={cx('TeamBuildingCard__wrap')}>
-        <ul>
-            <TeamCardValue />
-        </ul>
+      <div className={cx('TeamBuildingCard__wrap')}
+      dangerouslySetInnerHTML={{__html: result}}>
       </div>
     );
   };
@@ -46,9 +38,6 @@ const TeamBuildingCard = ({
             모둠을 클릭해서 팀원을 확인하세요.
           </p>
         </div>
-        <TeamCard />
-        <TeamCard />
-        <TeamCard />
         <TeamCard />
       </div>
     </>
