@@ -45,6 +45,12 @@ const TeamBuilding = ({
     createTeam(studentNumber);
   }
 
+  const handleCreateTeamAgain = () => {
+    setIsBlock(!isBlock);
+    setStudentNumber(2);
+    setTeamNumber(2);
+  }
+
   return (
     <>
       <div className={cx('TeamBuilding__left')}>
@@ -86,7 +92,7 @@ const TeamBuilding = ({
             <Button 
             children="다시 시작" 
             customStyle={buttonCustomStyle}
-            handleFunction={() => handleCreateTeam()}
+            handleFunction={() => handleCreateTeamAgain()}
              /> :
             <Button 
             children="뽑기 시작" 
