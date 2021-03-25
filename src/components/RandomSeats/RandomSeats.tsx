@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent,Dispatch, SetStateAction } from 'react';
+import React, { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import RANDOMSEATS_IMG from 'assets/images/RandomSeats/RANDOM_SEAT.png';
 
 import classNames from 'classnames';
@@ -27,14 +27,14 @@ const buttonCustomStyle = {
   fontSize: '18px',
 };
 
-const RandomSeats = ({ 
-  createTable, 
-  tableTag, 
-  isSeatHidden, 
+const RandomSeats = ({
+  createTable,
+  tableTag,
+  isSeatHidden,
   setIsSeatHidden,
   isRandom,
   setIsRandom
- }: IRandomSeatsProps) => {
+}: IRandomSeatsProps) => {
   const [rowNumber, setRowNumber] = useState<number>(1);
   const [columnNumber, setColumnNumber] = useState<number>(1);
   const [isCreateSeats, setIsCreateSeats] = useState<boolean>(false);
@@ -49,9 +49,9 @@ const RandomSeats = ({
       alert('가로줄과 세로줄은 1보다 커야 합니다.');
       setIsCreateSeats(false);
     } else
-    createTable(rowNumber,columnNumber);
+      createTable(rowNumber, columnNumber);
   }
-  
+
   const handleAgainCreateSeat = () => {
     setRowNumber(1);
     setColumnNumber(1);
@@ -121,12 +121,12 @@ const RandomSeats = ({
               handleFunction={() => handleAgainCreateSeat()}
             />
           ) : (
-            <Button
-              children="자리 생성"
-              customStyle={buttonCustomStyle}
-              handleFunction={() => handleCreateSeat()}
-            />
-          )}
+              <Button
+                children="자리 생성"
+                customStyle={buttonCustomStyle}
+                handleFunction={() => handleCreateSeat()}
+              />
+            )}
         </div>
       </div>
 
@@ -142,8 +142,8 @@ const RandomSeats = ({
             tableTag={tableTag}
           />
         ) : (
-          <></>
-        )}
+            <></>
+          )}
       </div>
     </>
   );
