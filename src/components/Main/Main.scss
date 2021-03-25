@@ -7,7 +7,7 @@
       float: left;
       margin-top: 15%;
       margin-left: 10%;
-      width: 50vw;
+      width: 30vw;
       & ul {
         list-style: none;
         & li {
@@ -28,9 +28,10 @@
       }
     }
     &-right {
-      float: right;
-      margin-right: 5%;
-      margin-top: 10%;
+      display: inline;
+      position: relative;
+      left: 10%;
+      top: 170px;
       width: 30vw;
       // background-color: lightcoral;
       & img {

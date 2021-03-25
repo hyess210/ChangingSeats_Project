@@ -35,6 +35,9 @@
       margin: auto 8px 8px auto;
       font-size: $font_title_4;
       padding: 20px;
+      & li {
+        list-style: none;
+      }
     }
   }
 }
